@@ -1,4 +1,4 @@
-baseURL = "https://raphael2692.github.io/myblog/"
+baseURL = "https://www.raffaelespataro.it/"
 title = "raffaeleSpataro.it"
 
 # themesDir = "../.."
@@ -11,6 +11,7 @@ publishDir = "docs"
 [params]
   author = "Raffaele Spataro"
   description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula turpis sit amet elit pretium."
+  avatar = "avataaars.png"
   [[params.social]]
     name = "github"
     url = "https://github.com/gohugoio"
@@ -41,3 +42,6 @@ publishDir = "docs"
   #  primaryColor = "#ffffff"
   #  lightColor = "#a2a2a2"
   #  lightestColor = "#d3d3d3"
+
+[params.style]
+    primaryColor = "#990d44"
