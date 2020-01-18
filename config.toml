@@ -1,7 +1,8 @@
 baseURL = "https://www.raffaelespataro.it/"
-title = "raffaeleSpataro.it"
+title = "Raffaele Spataro"
 
 # themesDir = "../.."
+
 theme = "m10c"
 
 paginate = 5
@@ -10,14 +11,14 @@ publishDir = "docs"
 
 [params]
   author = "Raffaele Spataro"
-  description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula turpis sit amet elit pretium."
+  description = "under costruction (!) Data Scientist presso Soft Strategy. Questo è il mio blog personale, dove scrivo un po' su tutto, dalla vita ai progetti"
   avatar = "avataaars.png"
   [[params.social]]
     name = "github"
-    url = "https://github.com/gohugoio"
-  [[params.social]]
-    name = "twitter"
-    url = "https://twitter.com/gohugoio"
+    url = "https://github.com/raphael2692"
+#  [[params.social]]
+#    name = "twitter"
+#    url = "https://twitter.com/raffaele2692"
 
   # Brown theme
   #[params.style]
