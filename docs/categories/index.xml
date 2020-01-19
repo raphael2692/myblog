@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on raffaeleSpataro.it</title>
+    <title>Categories on Il mio Blog</title>
     <link>https://www.raffaelespataro.it/categories/</link>
-    <description>Recent content in Categories on raffaeleSpataro.it</description>
+    <description>Recent content in Categories on Il mio Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sun, 19 Jan 2020 12:48:08 +0100</lastBuildDate>
     
@@ -11,11 +11,11 @@
     
     
     <item>
-      <title>life updates</title>
-      <link>https://www.raffaelespataro.it/categories/life-updates/</link>
+      <title>generale</title>
+      <link>https://www.raffaelespataro.it/categories/generale/</link>
       <pubDate>Sun, 19 Jan 2020 12:48:08 +0100</pubDate>
       
-      <guid>https://www.raffaelespataro.it/categories/life-updates/</guid>
+      <guid>https://www.raffaelespataro.it/categories/generale/</guid>
       <description></description>
     </item>
     

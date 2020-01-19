@@ -1,6 +1,6 @@
 ---
 categories:
-- life updates
+- generale
 date: "2020-01-19T12:48:08+01:00"
 description: Una lista di buoni propositi per il 2020. 
 slug: buoni-propositi-2020

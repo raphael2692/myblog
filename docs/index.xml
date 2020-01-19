@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>raffaeleSpataro.it</title>
+    <title>Il mio Blog</title>
     <link>https://www.raffaelespataro.it/</link>
-    <description>Recent content on raffaeleSpataro.it</description>
+    <description>Recent content on Il mio Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sun, 19 Jan 2020 12:48:08 +0100</lastBuildDate>
     
@@ -12,10 +12,10 @@
     
     <item>
       <title>Buoni propositi per il 2020</title>
-      <link>https://www.raffaelespataro.it/posts/life-updates/buoni-propositi-2020/</link>
+      <link>https://www.raffaelespataro.it/posts/generale/buoni-propositi-2020/</link>
       <pubDate>Sun, 19 Jan 2020 12:48:08 +0100</pubDate>
       
-      <guid>https://www.raffaelespataro.it/posts/life-updates/buoni-propositi-2020/</guid>
+      <guid>https://www.raffaelespataro.it/posts/generale/buoni-propositi-2020/</guid>
       <description>Un po&amp;rsquo; in ritardo, una lista di buoni propositi per il 2020.
 1. Imparare a documentarsi Da un anno a questa parte ho acquistato un dominio con il mio nome per creare un sito web portfolio. Quest&#39;anno vorrei fare di più. Sono migrato ad Hugo, un generatore di siti statici basato su Go. Spero che il mio feticismo per il markdown (🤭) mi aiuti a scrivere ogni giorno qualcosa, su quello che faccio, che leggo e che mi capita.</description>
     </item>

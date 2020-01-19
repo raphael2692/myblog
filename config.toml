@@ -1,5 +1,5 @@
 baseURL = "https://www.raffaelespataro.it/"
-title = "raffaeleSpataro.it"
+title = "Il mio Blog"
 
 # themesDir = "../.."
 
@@ -15,7 +15,7 @@ enableGitInfo = "true"
 
 [params]
   author = "Raffaele Spataro"
-  description = "Ciao, mi chiamo Raffaele e sono un appassionato di Data Science e Sviluppo Web. Questo è il mio blog personale, dove racconto i miei interessi e qualcosa della mia vita."
+  description = "Per gli amici Raffa. Appassionato di data science, programmazione e filosofia. Credo in un futuro digitale e senza pregiudizi."
   avatar = "avataaars.png"
   
   [[params.social]]
