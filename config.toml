@@ -13,7 +13,8 @@ defaultContentLanguage = "it"
 enableEmoji = "true"
 enableGitInfo = "true"
 
-disqusShortname = "raffaelespataro"
+# https://https-www-raffaelespataro-it.disqus.com/admin/settings/general/
+disqusShortname = "https-www-raffaelespataro-it"
 
 [params]
   author = "Raffaele Spataro"
