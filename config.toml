@@ -13,6 +13,8 @@ defaultContentLanguage = "it"
 enableEmoji = "true"
 enableGitInfo = "true"
 
+disqusShortname = "raffaelespataro"
+
 [params]
   author = "Raffaele Spataro"
   description = "Per gli amici Raffa. Appassionato di data science, programmazione e filosofia. Credo in un futuro digitale e senza pregiudizi."
