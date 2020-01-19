@@ -8,10 +8,14 @@ theme = "m10c"
 paginate = 5
 
 publishDir = "docs"
+contentDir = "content"
+defaultContentLanguage = "it"
+enableEmoji = "true"
+enableGitInfo = "true"
 
 [params]
   author = "Raffaele Spataro"
-  description = "under costruction (!) Data Scientist presso Soft Strategy. Questo è il mio blog personale, dove scrivo un po' su tutto, dalla vita ai progetti"
+  description = "Ciao, mi chiamo Raffaele e sono un appassionato di Data Science e Sviluppo Web. Questo è il mio blog personale, dove racconto i miei interessi e qualcosa della mia vita."
   avatar = "avataaars.png"
   
   [[params.social]]
