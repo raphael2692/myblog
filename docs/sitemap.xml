@@ -3,15 +3,48 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://www.raffaelespataro.it/tags/blogging/</loc>
+    <lastmod>2020-01-19T14:18:23+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.raffaelespataro.it/posts/life-updates/buoni-propositi-2020/</loc>
+    <lastmod>2020-01-19T14:18:23+01:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://www.raffaelespataro.it/categories/</loc>
+    <lastmod>2020-01-19T14:18:23+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.raffaelespataro.it/tags/hugo/</loc>
+    <lastmod>2020-01-19T14:18:23+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.raffaelespataro.it/categories/life-updates/</loc>
+    <lastmod>2020-01-19T14:18:23+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.raffaelespataro.it/tags/personal-brand/</loc>
+    <lastmod>2020-01-19T14:18:23+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.raffaelespataro.it/posts/</loc>
+    <lastmod>2020-01-19T14:18:23+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://www.raffaelespataro.it/</loc>
+    <lastmod>2020-01-19T14:18:23+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://www.raffaelespataro.it/tags/</loc>
+    <lastmod>2020-01-19T14:18:23+01:00</lastmod>
   </url>
   
 </urlset>
