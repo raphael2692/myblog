@@ -24,9 +24,9 @@ Iniziare a lavorare mi ha fatto capire quanta narrazione superflua graviti intor
 
 ## 3. Padroneggiare il paradigma OOP
 
---da continuare
+Sono abituato a lavorare con gli oggetti quando importo librerie e moduli esterni, ma quest'anno vorrei perfezionare la mia comprensione della programmazione, magari partendo dal refactory di vecchi script che scritto.  
 
-## 3. Demistificare gli IDE (Eclipse, Visual Studio CE) con mini progetti basati su Java e C++
+# 4. Demistificare gli IDE (Eclipse, Visual Studio CE) con mini progetti basati su Java e C++
 
---da continuare
+Quest'anno vorrei lasciare la mia confort zone (visual studio code/jupyter) ed esplorare ambienti di sviluppo più complessi. È l'occasione di approcciarsi ad altri linguaggi e abituarsi al loro boilerplate. 
 
