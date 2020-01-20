@@ -1,7 +1,8 @@
 baseURL = "https://www.raffaelespataro.it/"
-title = "Il mio Blog"
+title = "Raffaele Spataro - Blog"
 
-# themesDir = "../.."
+
+# themesDir = "../.." -raf
 
 theme = "m10c"
 
@@ -13,13 +14,15 @@ defaultContentLanguage = "it"
 enableEmoji = "true"
 enableGitInfo = "true"
 
-# https://https-www-raffaelespataro-it.disqus.com/admin/settings/general/
+# https://https-www-raffaelespataro-it.disqus.com/admin/settings/general/ -raf
 disqusShortname = "https-www-raffaelespataro-it"
 
+# put custom variables here! -raf
 [params]
   author = "Raffaele Spataro"
   description = "Per gli amici Raffa. Appassionato di data science, programmazione e filosofia. Credo in un futuro digitale e senza pregiudizi."
   avatar = "avataaars.png"
+  myvar1 = "Post recenti"
   
   [[params.social]]
     name = "linkedin"
