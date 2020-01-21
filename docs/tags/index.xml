@@ -11,15 +11,6 @@
     
     
     <item>
-      <title>blogging</title>
-      <link>https://www.raffaelespataro.it/tags/blogging/</link>
-      <pubDate>Sun, 19 Jan 2020 12:48:08 +0100</pubDate>
-      
-      <guid>https://www.raffaelespataro.it/tags/blogging/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>hugo</title>
       <link>https://www.raffaelespataro.it/tags/hugo/</link>
       <pubDate>Sun, 19 Jan 2020 12:48:08 +0100</pubDate>
@@ -29,11 +20,20 @@
     </item>
     
     <item>
-      <title>personal brand</title>
-      <link>https://www.raffaelespataro.it/tags/personal-brand/</link>
+      <title>progetti</title>
+      <link>https://www.raffaelespataro.it/tags/progetti/</link>
       <pubDate>Sun, 19 Jan 2020 12:48:08 +0100</pubDate>
       
-      <guid>https://www.raffaelespataro.it/tags/personal-brand/</guid>
+      <guid>https://www.raffaelespataro.it/tags/progetti/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>propositi</title>
+      <link>https://www.raffaelespataro.it/tags/propositi/</link>
+      <pubDate>Sun, 19 Jan 2020 12:48:08 +0100</pubDate>
+      
+      <guid>https://www.raffaelespataro.it/tags/propositi/</guid>
       <description></description>
     </item>
     

@@ -3,11 +3,6 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://www.raffaelespataro.it/tags/blogging/</loc>
-    <lastmod>2020-01-21T00:14:35+01:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://www.raffaelespataro.it/posts/generale/buoni-propositi-2020/</loc>
     <lastmod>2020-01-21T00:14:35+01:00</lastmod>
   </url>
@@ -28,12 +23,17 @@
   </url>
   
   <url>
-    <loc>https://www.raffaelespataro.it/tags/personal-brand/</loc>
+    <loc>https://www.raffaelespataro.it/posts/</loc>
     <lastmod>2020-01-21T00:14:35+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.raffaelespataro.it/posts/</loc>
+    <loc>https://www.raffaelespataro.it/tags/progetti/</loc>
+    <lastmod>2020-01-21T00:14:35+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.raffaelespataro.it/tags/propositi/</loc>
     <lastmod>2020-01-21T00:14:35+01:00</lastmod>
   </url>
   
