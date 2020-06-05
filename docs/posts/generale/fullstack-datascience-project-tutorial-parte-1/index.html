@@ -19,7 +19,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.raffaelespataro.it/posts/generale/fullstack-datascience-project-tutorial-parte-1/" />
 <meta property="article:published_time" content="2020-06-05T12:48:08+01:00" />
-<meta property="article:modified_time" content="2020-06-05T18:37:40+02:00" />
+<meta property="article:modified_time" content="2020-06-05T19:13:09+02:00" />
 
 
   </head>
@@ -99,7 +99,7 @@ Se siete capitati qui googlando e vi serve solo il codice lo trovate su <a href=
 ti troverai a utilizzare tutti i giorni.</p>
 <h3 id="la-mission-del-datascientist-creare-valore-dai-dati">La mission del <em>Datascientist</em>: creare valore dai dati&hellip;</h3>
 <p>&hellip;e altri spot accalappiasghei che circolando sul web: cosa vogliono dire esattamente? Probabilmente nulla. Ma sedovessi scommettere tra assumere 
-un dottorato in astrofisica per migliorare l'accuratezza di un modello open source dal 99,8% al 99,9% e assumerne un altro che mastichi un po&rsquo; di backend preferirei sicuramente il secondo. Ok scherzo, in realtà scrivo così perché non ho un dottorato in astrofisica 😔&hellip;</p>
+un dottore in astrofisica per migliorare l'accuratezza di un modello open source dal 99,8% al 99,9% e assumerne un altro che mastichi un po&rsquo; di backend preferirei sicuramente il secondo. Ok scherzo, in realtà scrivo così perché non ho un dottorato in astrofisica 😔&hellip;</p>
 <h2 id="parte-i-creare-una-fonte-di-dati">Parte I: Creare una fonte di dati</h2>
 <h3 id="nella-vita-esistono-diversi-gradi-di-swag">Nella vita esistono diversi gradi di <em>swag</em>&hellip;</h3>
 <ol>
@@ -194,16 +194,17 @@ tutti i seguenti dati:</p>
 <ul>
 <li><strong>id</strong> (che fa parte dell'url di ogni articolo ed è estratto con una regex)</li>
 <li><strong>text</strong> (il titolo vero e proprio)</li>
-<li><strong>href</strong> (a ogni titolo corrisponde un url al relativo articolo&hellip;utile per esapendere in futuro la nostra api!)</li>
+<li><strong>href</strong> (a ogni titolo corrisponde un url al relativo articolo&hellip;utile per espandere in futuro la nostra api!)</li>
 <li><strong>source</strong> (tag generico per identificare la fonte del titolo, nel caso un domani questi dati confluiscano in un DB con titoli da altre fonti)</li>
 <li><strong>date</strong> (timestamp del momento in cui vengono raccolti i dati)</li>
 </ul>
-<p>A complicare leggermente le cose è il fatto la struttura <code>h2&gt;a</code> appartiene anche a elementi che non sono titoli, e che non ci interessano.</p>
+<p>A complicare leggermente le cose è il fatto che la struttura <code>h2&gt;a</code> appartiene anche a elementi che non sono titoli, e che non ci interessano.</p>
 <p>Se non vi torna qualcosa di questo snippet probabilmente dovrete ripassare:</p>
 <ul>
 <li>i concetti base di programmazione asincrona con javascript (js)</li>
 <li>il concetto di callback</li>
 <li>l'oggetto Promise</li>
+<li>le funzioni arrow</li>
 <li>il concetto di deserializzazione</li>
 </ul>
 <p>Perché javascript? Javascript è il linguaggio alla base dell'interazione tra browser web. L'obiettivo di questa guida è aprire qualche orizzonte rispetto al solito stack di strumenti da datascientist (python/R). Se per voi è nuovo, vale la pena perdere un po&rsquo; di tempo per capire come funziona il web e javascript. I temi che ho elencato sopra sono trattati approfonditamente su <a href="https://developer.mozilla.org/it/">MDN (Mozzilla Developers Network)</a>.</p>

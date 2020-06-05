@@ -43,7 +43,7 @@ ti troverai a utilizzare tutti i giorni.
 ### La mission del *Datascientist*: creare valore dai dati...
 
 ...e altri spot accalappiasghei che circolando sul web: cosa vogliono dire esattamente? Probabilmente nulla. Ma sedovessi scommettere tra assumere 
-un dottorato in astrofisica per migliorare l'accuratezza di un modello open source dal 99,8% al 99,9% e assumerne un altro che mastichi un po' di backend preferirei sicuramente il secondo. Ok scherzo, in realtà scrivo così perché non ho un dottorato in astrofisica 😔...
+un dottore in astrofisica per migliorare l'accuratezza di un modello open source dal 99,8% al 99,9% e assumerne un altro che mastichi un po' di backend preferirei sicuramente il secondo. Ok scherzo, in realtà scrivo così perché non ho un dottorato in astrofisica 😔...
 
 
 ## Parte I: Creare una fonte di dati
@@ -152,17 +152,18 @@ tutti i seguenti dati:
 
 - **id** (che fa parte dell'url di ogni articolo ed è estratto con una regex)
 - **text** (il titolo vero e proprio)
-- **href** (a ogni titolo corrisponde un url al relativo articolo...utile per esapendere in futuro la nostra api!)
+- **href** (a ogni titolo corrisponde un url al relativo articolo...utile per espandere in futuro la nostra api!)
 - **source** (tag generico per identificare la fonte del titolo, nel caso un domani questi dati confluiscano in un DB con titoli da altre fonti)
 - **date** (timestamp del momento in cui vengono raccolti i dati)
 
-A complicare leggermente le cose è il fatto la struttura ```h2>a``` appartiene anche a elementi che non sono titoli, e che non ci interessano. 
+A complicare leggermente le cose è il fatto che la struttura ```h2>a``` appartiene anche a elementi che non sono titoli, e che non ci interessano. 
 
 Se non vi torna qualcosa di questo snippet probabilmente dovrete ripassare:
 
 - i concetti base di programmazione asincrona con javascript (js)
 - il concetto di callback
 - l'oggetto Promise
+- le funzioni arrow
 - il concetto di deserializzazione
 
 Perché javascript? Javascript è il linguaggio alla base dell'interazione tra browser web. L'obiettivo di questa guida è aprire qualche orizzonte rispetto al solito stack di strumenti da datascientist (python/R). Se per voi è nuovo, vale la pena perdere un po' di tempo per capire come funziona il web e javascript. I temi che ho elencato sopra sono trattati approfonditamente su [MDN (Mozzilla Developers Network)](https://developer.mozilla.org/it/). 
@@ -227,6 +228,7 @@ E il risultato dell'interrogazione è il seguente (3 di 65 risultati):
 ## Nelle prossime puntate
 
 E questo è quanto. Nella prossima mostrerò come creare un database relazionale ([postgreeSQL](https://www.postgresql.org/)) all'interno di un cloud gratuito (heroku) e come creare un client python che in automatico periodicamente aggiunga dati da questa API (o magari un'altra!). 
+
 
 
 
