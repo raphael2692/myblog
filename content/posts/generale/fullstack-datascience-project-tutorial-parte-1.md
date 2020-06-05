@@ -14,11 +14,11 @@ title: "Fullstack Datascience (parte I): Creare un API personalizzata con node, 
 # Fullstack Datascience (parte I)
 * * * 
 ## Indice
-### [Introduziione](#Introduzione)
+### [Introduzione](#Introduzione)
 ### [Parte I: Creare una fonte di dati](#parte-i-creare-una-fonte-di-dati)
 
 * * * 
-## Introduziione 
+## Introduzione 
 
 ### TL;DR
 Questo è il primo tutorial che pubblico, vi prego di avere pietà e perdonarmi se suona un po' 'aranzullese'.
