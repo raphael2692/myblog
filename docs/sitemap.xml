@@ -3,48 +3,68 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://www.raffaelespataro.it/posts/generale/buoni-propositi-2020/</loc>
-    <lastmod>2020-01-21T00:14:35+01:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://www.raffaelespataro.it/categories/</loc>
-    <lastmod>2020-01-21T00:14:35+01:00</lastmod>
+    <lastmod>2020-06-05T12:48:08+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.raffaelespataro.it/categories/generale/</loc>
-    <lastmod>2020-01-21T00:14:35+01:00</lastmod>
+    <loc>https://www.raffaelespataro.it/tags/datascience/</loc>
+    <lastmod>2020-06-05T12:48:08+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.raffaelespataro.it/tags/hugo/</loc>
-    <lastmod>2020-01-21T00:14:35+01:00</lastmod>
+    <loc>https://www.raffaelespataro.it/posts/generale/fullstack-datascience-project-tutorial-parte-1/</loc>
+    <lastmod>2020-06-05T12:48:08+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://www.raffaelespataro.it/posts/</loc>
-    <lastmod>2020-01-21T00:14:35+01:00</lastmod>
+    <lastmod>2020-06-05T12:48:08+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://www.raffaelespataro.it/tags/progetti/</loc>
-    <lastmod>2020-01-21T00:14:35+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.raffaelespataro.it/tags/propositi/</loc>
-    <lastmod>2020-01-21T00:14:35+01:00</lastmod>
+    <lastmod>2020-06-05T12:48:08+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://www.raffaelespataro.it/</loc>
-    <lastmod>2020-01-21T00:14:35+01:00</lastmod>
+    <lastmod>2020-06-05T12:48:08+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://www.raffaelespataro.it/tags/</loc>
-    <lastmod>2020-01-21T00:14:35+01:00</lastmod>
+    <lastmod>2020-06-05T12:48:08+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.raffaelespataro.it/categories/tutorial/</loc>
+    <lastmod>2020-06-05T12:48:08+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.raffaelespataro.it/tags/tutorial/</loc>
+    <lastmod>2020-06-05T12:48:08+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.raffaelespataro.it/posts/generale/buoni-propositi-2020/</loc>
+    <lastmod>2020-01-21T01:22:42+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.raffaelespataro.it/categories/generale/</loc>
+    <lastmod>2020-01-21T01:22:42+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.raffaelespataro.it/tags/hugo/</loc>
+    <lastmod>2020-01-21T01:22:42+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.raffaelespataro.it/tags/propositi/</loc>
+    <lastmod>2020-01-21T01:22:42+01:00</lastmod>
   </url>
   
 </urlset>

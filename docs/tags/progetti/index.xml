@@ -1,14 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>progetti on Raffaele Spataro - Blog</title>
+    <title>progetti on Raffaele Spataro</title>
     <link>https://www.raffaelespataro.it/tags/progetti/</link>
-    <description>Recent content in progetti on Raffaele Spataro - Blog</description>
+    <description>Recent content in progetti on Raffaele Spataro</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 19 Jan 2020 12:48:08 +0100</lastBuildDate>
+    <lastBuildDate>Fri, 05 Jun 2020 12:48:08 +0100</lastBuildDate>
     
 	<atom:link href="https://www.raffaelespataro.it/tags/progetti/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Fullstack Datascience (parte I): Creare un API personalizza con node, express e puppeteer!</title>
+      <link>https://www.raffaelespataro.it/posts/generale/fullstack-datascience-project-tutorial-parte-1/</link>
+      <pubDate>Fri, 05 Jun 2020 12:48:08 +0100</pubDate>
+      
+      <guid>https://www.raffaelespataro.it/posts/generale/fullstack-datascience-project-tutorial-parte-1/</guid>
+      <description>Fullstack Datascience (parte I)  Indice Introduziione Parte I: Creare una fonte di dati  Introduziione TL;DR Questo è il primo tutorial che pubblico, vi prego di avere pietà e perdonarmi se suona un po&amp;rsquo; &amp;lsquo;aranzullese&amp;rsquo;. Se siete capitati qui googlando e vi serve solo il codice lo trovate su github. 🎉🎉🎉
+Fullstack what? Ok, il termine è un po&amp;rsquo; pretenzioso. In pratica voglio condividere un progetto che comprenda queste funzioni:</description>
+    </item>
     
     <item>
       <title>Buoni propositi per il 2020</title>

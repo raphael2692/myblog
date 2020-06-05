@@ -1,8 +1,8 @@
 baseURL = "https://www.raffaelespataro.it/"
-title = "Raffaele Spataro - Blog"
+title = "Raffaele Spataro"
 
 
-# themesDir = "../.." -raf
+# themesDir = "themes/m10c" -raf
 
 theme = "m10c"
 
@@ -20,7 +20,7 @@ disqusShortname = "https-www-raffaelespataro-it"
 # put custom variables here! -raf
 [params]
   author = "Raffaele Spataro"
-  description = "Per gli amici Raffa. Appassionato di data science, programmazione e filosofia. Credo in un futuro digitale e senza pregiudizi."
+  description = "Per gli amici Raffa. Appassionato di datascience, programmazione e filosofia. Credo in un futuro digitale e senza pregiudizi."
   avatar = "avataaars.png"
   myvar1 = "Post recenti"
   

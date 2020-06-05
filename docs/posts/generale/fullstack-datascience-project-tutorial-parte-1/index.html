@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Fullstack Datascience (parte I): Creare un API personalizza con node, express e puppeteer! // Raffaele Spataro</title>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.62.2" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Raffaele Spataro" />
+    <meta name="description" content="Come creare un progetto datascience fullstack. Prima parte, creare un API personalizza con node, express e puppeteer!" />
+    <link rel="stylesheet" href="https://www.raffaelespataro.it/css/main.min.ef42b67ede4c3cf0fb788c8c389448e2baee59699ae13db46defa6734d371849.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Fullstack Datascience (parte I): Creare un API personalizza con node, express e puppeteer!"/>
+<meta name="twitter:description" content="Come creare un progetto datascience fullstack. Prima parte, creare un API personalizza con node, express e puppeteer!"/>
+
+    <meta property="og:title" content="Fullstack Datascience (parte I): Creare un API personalizza con node, express e puppeteer!" />
+<meta property="og:description" content="Come creare un progetto datascience fullstack. Prima parte, creare un API personalizza con node, express e puppeteer!" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.raffaelespataro.it/posts/generale/fullstack-datascience-project-tutorial-parte-1/" />
+<meta property="article:published_time" content="2020-06-05T12:48:08+01:00" />
+<meta property="article:modified_time" content="2020-06-05T12:48:08+01:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://www.raffaelespataro.it/"><img class="app-header-avatar" src="/avataaars.png" alt="Raffaele Spataro" /></a>
+      <h1>Raffaele Spataro</h1>
+      <p>Per gli amici Raffa. Appassionato di datascience, programmazione e filosofia. Credo in un futuro digitale e senza pregiudizi.</p>
+      <div class="app-header-social">
+        
+          <a target="_blank" href="https://www.linkedin.com/in/raffaele-spataro-44194b57/" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-linkedin">
+  <title>linkedin</title>
+  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle>
+</svg></a>
+        
+          <a target="_blank" href="https://github.com/raphael2692" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg></a>
+        
+          <a target="_blank" href="https://twitter.com/raffaele2692" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-twitter">
+  <title>twitter</title>
+  <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+</svg></a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Fullstack Datascience (parte I): Creare un API personalizza con node, express e puppeteer!</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Jun 5, 2020
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          6 min read
+        </div><div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag">
+  <title>tag</title>
+  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line>
+</svg>
+          <a class="tag" href="https://www.raffaelespataro.it/tags/progetti/">progetti</a><a class="tag" href="https://www.raffaelespataro.it/tags/tutorial/">tutorial</a><a class="tag" href="https://www.raffaelespataro.it/tags/datascience/">datascience</a></div></div>
+    </header>
+    <div class="post-content">
+      <h1 id="fullstack-datascience-parte-i">Fullstack Datascience (parte I)</h1>
+<hr>
+<h2 id="indice">Indice</h2>
+<h3 id="introduziioneintroduzione"><a href="#Introduzione">Introduziione</a></h3>
+<h3 id="parte-i-creare-una-fonte-di-datiparte-i-creare-una-fonte-di-dati"><a href="#parte-i-creare-una-fonte-di-dati">Parte I: Creare una fonte di dati</a></h3>
+<hr>
+<h2 id="introduziione">Introduziione</h2>
+<h3 id="tldr">TL;DR</h3>
+<p>Questo è il primo tutorial che pubblico, vi prego di avere pietà e perdonarmi se suona un po&rsquo; &lsquo;aranzullese&rsquo;.
+Se siete capitati qui googlando e vi serve solo il codice lo trovate su github.  🎉🎉🎉</p>
+<h3 id="fullstack-what"><em>Fullstack what</em>?</h3>
+<p>Ok, il termine è un po&rsquo; pretenzioso. In pratica voglio condividere un progetto che comprenda queste funzioni:</p>
+<ol>
+<li>Automatizzare il processo di scraping di un sito e trasformarlo in una &lsquo;Restful API&rsquo; <strong>(parte I)</strong></li>
+<li>Creare un client che periodicamente richiami l'API e carichi i dati in un DB</li>
+<li>Creare una web app che consumi i dati di questo DB e crei delle infografiche</li>
+<li>Creare un modello di machine learning che consumi la stessa fonte dati e la &lsquo;serva&rsquo; in un'altra API</li>
+<li>Deployare il tutto su una piattaforma cloud gratuita: <a href="https://dashboard.heroku.com/login">HEROKU</a></li>
+</ol>
+<p>Ok questa lista è ancora più pretenziosa&hellip;😂</p>
+<h3 id="ma-io-voglio-fare-il-datascientist-perché-dovrebbe-interessarmi-tutta-sta-roba">Ma io voglio fare il <em>Datascientist</em>, perché dovrebbe interessarmi tutta &lsquo;sta roba?</h3>
+<p>Se come me lavori in questo settore da qualche tempo probabilmente già lo sai, altrimenti&hellip;è un modo (spero) divertente per familiarizzare con tecnologie che 
+ti troverai a utilizzare tutti i giorni.</p>
+<h3 id="la-mission-del-datascientist-creare-valore-dai-dati">La mission del <em>Datascientist</em>: creare valore dai dati&hellip;</h3>
+<p>&hellip;e altri spot accalappiasghei che circolando sul web: cosa vogliono dire esattamente? Probabilmente nulla. Ma sedovessi scommettere tra assumere 
+un dottorato in astrofisica per migliorare l'accuratezza di un modello open source dal 99,8% al 99,9% e assumerne un altro che mastichi un po&rsquo; di backend preferirei sicuramente il secondo. Ok scherzo, in realtà scrivo così perché non ho un dottorato in astrofisica 😔&hellip;</p>
+<h2 id="parte-i-creare-una-fonte-di-dati">Parte I: Creare una fonte di dati</h2>
+<h3 id="nella-vita-esistono-diversi-gradi-di-swag">Nella vita esistono diversi gradi di <em>swag</em>&hellip;</h3>
+<ol>
+<li>Lavorare su dati tabulari statici (ad es. il leggendario Iris Dataset)</li>
+<li>Craere i propri dati tabulari a partire da fonti dinamiche (tipo una web API)</li>
+<li>Fare scraping di un sito da un app locale qualora non esistesse un API appropriata (o qualora non potremmo permetterci il costo della chiave di attivazione&hellip;)</li>
+<li>Fare scraping di un sito attraverso un API fatta da noi e usarla come &lsquo;microservizio&rsquo; su tutti i nostri progetti presenti e futuri (o almeno, finchè non cambi la struttura del sito e possiamo buttare nel &hellip; la nostra API)</li>
+</ol>
+<p>Di seguito vi mostro come ho realizzato il punto 4.</p>
+<h3 id="domande-e-riposte">Domande e riposte</h3>
+<ul>
+<li>Con che tipo di dati voglio lavorare? Testuali</li>
+<li>Che tipo di testi posso cercare? Qualcosa di breve, ma nemmeno banale come i tag dei prodotti di amazon&hellip;i titoli di un giornale!</li>
+<li>Ok, quale giornale? Qualcosa di divertente, così mi annoio di meno durante i test&hellip;*<em>idea malvagia</em>* <strong>Libero</strong>!</li>
+</ul>
+<h3 id="come-funziona">Come funziona</h3>
+<p><img src="/articolo_libero.png" alt="giornalismo di qualità"></p>
+<p>Quest'artistico titolo e tutti i suoi fratellini si trovano da qualche parte nella pagina html del sito <a href="https://www.liberoquotidiano.it/">liberoquotidiano.it</a>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">h2</span>&gt;
+    &lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://www.liberoquotidiano.it/news/politica/23076003/giuseppe-conte-mes-resa-conti-senato-cazzata-crisi-politica-non-aggirabile.html&#34;</span>&gt;
+    “È una caz***a”, l’ira grillina travolge Conte. Tutto deciso, c’è già la data (vicina) della “crisi politica”
+    &lt;/<span style="color:#f92672">a</span>&gt;
+&lt;/<span style="color:#f92672">h2</span>&gt;
+
+</code></pre></div><p>La struttura del sito è molto semplice: tutti i titoli sono i valori di tag anchor all'interno di tag h2. Per tirarli fuori useremo <a href="https://github.com/puppeteer/puppeteer">Puppeteer</a>, una libreria di node.js che include una versione &lsquo;headless&rsquo; del browser chromium (il fork open source di chrome).</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">
+<span style="color:#75715e">// scraper.js
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">puppeteer</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;puppeteer&#39;</span>);
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">userAgent</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;user-agents&#39;</span>);
+
+<span style="color:#a6e22e">fetch</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">async</span> (<span style="color:#a6e22e">url</span>) =&gt; {
+    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">startTime</span> <span style="color:#f92672">=</span> Date.<span style="color:#a6e22e">now</span>();
+    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">scrapeDate</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Date();
+    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">browser</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">puppeteer</span>.<span style="color:#a6e22e">launch</span>({
+        <span style="color:#a6e22e">headless</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+        <span style="color:#a6e22e">defaultViewport</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">null</span>,
+        <span style="color:#a6e22e">args</span><span style="color:#f92672">:</span> [
+            <span style="color:#e6db74">&#39;--no-sandbox&#39;</span>,
+            <span style="color:#e6db74">&#39;--disable-setuid-sandbox&#39;</span>,
+        ]
+    });
+    <span style="color:#66d9ef">try</span> {
+        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">page</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">browser</span>.<span style="color:#a6e22e">newPage</span>();
+        <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">page</span>.<span style="color:#a6e22e">setUserAgent</span>(<span style="color:#a6e22e">userAgent</span>.<span style="color:#a6e22e">toString</span>());
+        <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">page</span>.<span style="color:#66d9ef">goto</span>(<span style="color:#a6e22e">url</span>, { <span style="color:#a6e22e">waitUntil</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;networkidle2&#39;</span> });
+        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">html</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">page</span>.<span style="color:#a6e22e">evaluate</span>(
+            <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">callback</span>() {
+                <span style="color:#a6e22e">href_array</span> <span style="color:#f92672">=</span> Array.<span style="color:#a6e22e">from</span>(document.<span style="color:#a6e22e">querySelectorAll</span>(<span style="color:#e6db74">&#39;h2&gt;a&#39;</span>), <span style="color:#a6e22e">element</span> =&gt; <span style="color:#a6e22e">element</span>.<span style="color:#a6e22e">getAttribute</span>(<span style="color:#e6db74">&#34;href&#34;</span>));
+                <span style="color:#a6e22e">text_array</span> <span style="color:#f92672">=</span> Array.<span style="color:#a6e22e">from</span>(document.<span style="color:#a6e22e">querySelectorAll</span>(<span style="color:#e6db74">&#39;h2&gt;a&#39;</span>), <span style="color:#a6e22e">element</span> =&gt; <span style="color:#a6e22e">element</span>.<span style="color:#a6e22e">innerHTML</span>);
+                <span style="color:#66d9ef">return</span> { <span style="color:#a6e22e">href_array</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">href_array</span>, <span style="color:#a6e22e">text_array</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">text_array</span> }
+            }
+        )
+        <span style="color:#75715e">// questa variabile serve come buffer per non inserire titoli duplicati
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">container</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">text</span><span style="color:#f92672">:</span> {}, <span style="color:#a6e22e">href</span><span style="color:#f92672">:</span> {} };
+        <span style="color:#75715e">// questo array serve come struttura finale da condividere
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Array;
+        <span style="color:#a6e22e">html</span>.<span style="color:#a6e22e">text_array</span>.<span style="color:#a6e22e">forEach</span>(<span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">element</span>, <span style="color:#a6e22e">index</span>) {
+            <span style="color:#75715e">// questo blocco filtra i risultati
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>(<span style="color:#a6e22e">element</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">container</span>.<span style="color:#a6e22e">text</span>) <span style="color:#f92672">&amp;&amp;</span> (<span style="color:#a6e22e">element</span>.<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#34; &#34;</span>).<span style="color:#a6e22e">length</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">3</span>)) {
+                <span style="color:#a6e22e">container</span>.<span style="color:#a6e22e">text</span>[<span style="color:#a6e22e">index</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">element</span>
+                <span style="color:#a6e22e">container</span>.<span style="color:#a6e22e">href</span>[<span style="color:#a6e22e">index</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">html</span>.<span style="color:#a6e22e">href_array</span>[<span style="color:#a6e22e">index</span>]
+                <span style="color:#75715e">// questo blocco forma l&#39;array finale
+</span><span style="color:#75715e"></span>                <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">push</span>({
+                    <span style="color:#75715e">//l&#39;id è formato preso dall&#39;url dentro l&#39;attributo href. NOTA: alcuni url sono &#39;invalidi&#39; ma sono stati filtrati selezionando i text con grandezza &gt; 3
+</span><span style="color:#75715e"></span>                    <span style="color:#a6e22e">id</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">html</span>.<span style="color:#a6e22e">href_array</span>[<span style="color:#a6e22e">index</span>].<span style="color:#a6e22e">match</span>(<span style="color:#e6db74">/\(|\)|\d{8}/</span>)[<span style="color:#ae81ff">0</span>],
+                    <span style="color:#a6e22e">text</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">element</span>,
+                    <span style="color:#a6e22e">href</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">html</span>.<span style="color:#a6e22e">href_array</span>[<span style="color:#a6e22e">index</span>],
+                    <span style="color:#a6e22e">source</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;LiberoQuotidiano&#34;</span>,
+                    <span style="color:#a6e22e">date</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">scrapeDate</span>.<span style="color:#a6e22e">toISOString</span>()
+                })
+            }
+        });
+        <span style="color:#75715e">//console.log(container)
+</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>({ <span style="color:#a6e22e">data</span> })
+        <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">browser</span>.<span style="color:#a6e22e">close</span>();
+        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;Tempo impiegato: &#39;</span>, (Date.<span style="color:#a6e22e">now</span>() <span style="color:#f92672">-</span> <span style="color:#a6e22e">startTime</span>) <span style="color:#f92672">/</span> <span style="color:#ae81ff">1000</span>, <span style="color:#e6db74">&#39;s&#39;</span>);
+        <span style="color:#75715e">// è importate restituire un oggetto
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">return</span> { <span style="color:#a6e22e">data</span> };
+    } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">error</span>) {
+        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;ERRORE: &#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">error</span>)
+    } <span style="color:#66d9ef">finally</span> {
+        <span style="color:#a6e22e">browser</span>.<span style="color:#a6e22e">close</span>();
+    }
+}
+
+<span style="color:#75715e">// per importare le classi (funzioni) definite qui come moduli
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span>.<span style="color:#a6e22e">fetch</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">fetch</span>
+
+</code></pre></div><p>La logica del programma è racchiusa nella funzione <code>fetch()</code> che si occupa di prendere
+tutti i seguenti dati:</p>
+<ul>
+<li><strong>id</strong> (che fa parte dell'url di ogni articolo ed è estratto con una regex)</li>
+<li><strong>text</strong> (il titolo vero e proprio)</li>
+<li><strong>href</strong> (a ogni titolo corrisponde un url al relativo articolo&hellip;utile per esapendere in futuro la nostra api!)</li>
+<li><strong>source</strong> (tag generico per identificare la fonte del titolo, nel caso un domani questi dati confluiscano in un DB con titoli da altre fonti)</li>
+<li><strong>date</strong> (timestamp del momento in cui vengono raccolti i dati)</li>
+</ul>
+<p>A complicare leggermente le cose è il fatto la struttura <code>h2&gt;a</code> appartiene anche a elementi che non sono titoli, e che non ci interessano.</p>
+<p>Se non vi torna qualcosa di questo snippet probabilmente dovrete ripassare:</p>
+<ul>
+<li>i concetti base di programmazione asincrona con js</li>
+<li>il concetto di callback</li>
+<li>l'oggetto Promise</li>
+<li>il concetto di deserializzazione</li>
+</ul>
+<p>Notare l'utilizzo di una shotcut <code>{data}</code> per nestare tutto in un solo array, per evitare problemi di deserializzazione tra browser.</p>
+<p>L'ultima riga serve a esportare questa funzione e renderla richiamabile da un altro script js. Il tutto è nestato in un blocco <code>try/catch/finally</code> per evitare memory leaks 
+e debuggure gli errori più facilmente.</p>
+<p>Una volta definita questa funzione, dobbiamo fare in modo che questa venga eseguita su richiesta. Grazie a express creare un web server è estramente intuitivo. La nostra funzione <code>fetch()</code> verrà eseguita ogni qualvolta un client (un browser) cercherà di andare all'indirizzo <strong>https://localhost:3000/liberoquotidiano</strong>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">
+<span style="color:#75715e">// app.js 
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">express</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;express&#34;</span>);
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">scraper</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;./scraper&#34;</span>);
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">app</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">express</span>();
+
+<span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">use</span>(<span style="color:#a6e22e">express</span>.<span style="color:#66d9ef">static</span>(<span style="color:#e6db74">&#34;public&#34;</span>))
+
+<span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#34;/&#34;</span>, <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">req</span>, <span style="color:#a6e22e">res</span>) {
+    <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">send</span>(<span style="color:#e6db74">&#34;&lt;h1&gt; CUSTOM API (LiberoQuotidiano scraping) v 0.1 &lt;/h1&gt;&#34;</span>)
+})
+
+<span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#39;/liberoquotidiano&#39;</span>, <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">req</span>, <span style="color:#a6e22e">res</span>) {
+    <span style="color:#a6e22e">scraper</span>.<span style="color:#a6e22e">fetch</span>(<span style="color:#e6db74">&#34;https://www.liberoquotidiano.it/&#34;</span>).<span style="color:#a6e22e">then</span>( <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">callback</span>(<span style="color:#a6e22e">something</span>) {
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">json</span>(<span style="color:#a6e22e">something</span>);
+    })
+  })
+
+<span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">listen</span>(<span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">PORT</span> <span style="color:#f92672">||</span> <span style="color:#ae81ff">3000</span>,
+    () =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Server is running...&#34;</span>));
+
+</code></pre></div><p>E il risultato dell'interrogazione è il seguente (3 di 65 risultati):</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
+{<span style="color:#f92672">&#34;data&#34;</span>:[
+    {
+    <span style="color:#f92672">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;23076053&#34;</span>,<span style="color:#f92672">&#34;text&#34;</span>:<span style="color:#e6db74">&#34;\&#34;Volano parole grosse\&#34;. L&#39;accordo di Arcore è superato: Meloni-Salvini, contrasti sulle amministrative&#34;</span>,
+    <span style="color:#f92672">&#34;href&#34;</span>:<span style="color:#e6db74">&#34;https://www.liberoquotidiano.it/news/politica/23076053/meloni-salvini-contrasti-amministrative-volano-parole-grosse-accordo-arcore-superato.html&#34;</span>,<span style="color:#f92672">&#34;source&#34;</span>:<span style="color:#e6db74">&#34;LiberoQuotidiano&#34;</span>,
+    <span style="color:#f92672">&#34;date&#34;</span>:<span style="color:#e6db74">&#34;2020-06-05T15:06:34.487Z&#34;</span>
+    },
+    {
+    <span style="color:#f92672">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;23079879&#34;</span>,
+    <span style="color:#f92672">&#34;text&#34;</span>:<span style="color:#e6db74">&#34;\&#34;Ha depositato nome e simbolo\&#34;. La voce dal Palazzo: il partito di Conte che fa tremare i 5 Stelle&#34;</span>,
+    <span style="color:#f92672">&#34;href&#34;</span>:<span style="color:#e6db74">&#34;https://www.liberoquotidiano.it/news/politica/23079879/giuseppe-conte-depositato-nome-simbolo-partito-tremano-5-stelle.html&#34;</span>,
+    <span style="color:#f92672">&#34;source&#34;</span>:<span style="color:#e6db74">&#34;LiberoQuotidiano&#34;</span>,
+    <span style="color:#f92672">&#34;date&#34;</span>:<span style="color:#e6db74">&#34;2020-06-05T15:06:34.487Z&#34;</span>
+    },
+    {
+    <span style="color:#f92672">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;23076003&#34;</span>,
+    <span style="color:#f92672">&#34;text&#34;</span>:<span style="color:#e6db74">&#34;“È una caz***a”, l’ira grillina travolge Conte. Tutto deciso, c’è già la data (vicina) della “crisi politica”&#34;</span>,
+    <span style="color:#f92672">&#34;href&#34;</span>:<span style="color:#e6db74">&#34;https://www.liberoquotidiano.it/news/politica/23076003/giuseppe-conte-mes-resa-conti-senato-cazzata-crisi-politica-non-aggirabile.html&#34;</span>,
+    <span style="color:#f92672">&#34;source&#34;</span>:<span style="color:#e6db74">&#34;LiberoQuotidiano&#34;</span>,
+    <span style="color:#f92672">&#34;date&#34;</span>:<span style="color:#e6db74">&#34;2020-06-05T15:06:34.487Z&#34;</span>
+    }
+
+</code></pre></div><h2 id="conclusioni">Conclusioni</h2>
+<p>E questo è quanto. Nella prossima mostrerò come creare un database relazionale (postgree) all'interno di un cloud gratuito e come creare un client python che in automatico periodicamente aggiunga dati da questa API (o magari un'altra!).</p>
+
+    </div>
+    <div class="post-footer">
+      <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "https-www-raffaelespataro-it" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

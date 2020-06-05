@@ -1,14 +1,41 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on Raffaele Spataro - Blog</title>
+    <title>Tags on Raffaele Spataro</title>
     <link>https://www.raffaelespataro.it/tags/</link>
-    <description>Recent content in Tags on Raffaele Spataro - Blog</description>
+    <description>Recent content in Tags on Raffaele Spataro</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 19 Jan 2020 12:48:08 +0100</lastBuildDate>
+    <lastBuildDate>Fri, 05 Jun 2020 12:48:08 +0100</lastBuildDate>
     
 	<atom:link href="https://www.raffaelespataro.it/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>datascience</title>
+      <link>https://www.raffaelespataro.it/tags/datascience/</link>
+      <pubDate>Fri, 05 Jun 2020 12:48:08 +0100</pubDate>
+      
+      <guid>https://www.raffaelespataro.it/tags/datascience/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>progetti</title>
+      <link>https://www.raffaelespataro.it/tags/progetti/</link>
+      <pubDate>Fri, 05 Jun 2020 12:48:08 +0100</pubDate>
+      
+      <guid>https://www.raffaelespataro.it/tags/progetti/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tutorial</title>
+      <link>https://www.raffaelespataro.it/tags/tutorial/</link>
+      <pubDate>Fri, 05 Jun 2020 12:48:08 +0100</pubDate>
+      
+      <guid>https://www.raffaelespataro.it/tags/tutorial/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>hugo</title>
@@ -16,15 +43,6 @@
       <pubDate>Sun, 19 Jan 2020 12:48:08 +0100</pubDate>
       
       <guid>https://www.raffaelespataro.it/tags/hugo/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>progetti</title>
-      <link>https://www.raffaelespataro.it/tags/progetti/</link>
-      <pubDate>Sun, 19 Jan 2020 12:48:08 +0100</pubDate>
-      
-      <guid>https://www.raffaelespataro.it/tags/progetti/</guid>
       <description></description>
     </item>
     
