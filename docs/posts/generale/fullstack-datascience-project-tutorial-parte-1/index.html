@@ -19,7 +19,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.raffaelespataro.it/posts/generale/fullstack-datascience-project-tutorial-parte-1/" />
 <meta property="article:published_time" content="2020-06-05T12:48:08+01:00" />
-<meta property="article:modified_time" content="2020-06-05T12:48:08+01:00" />
+<meta property="article:modified_time" content="2020-06-05T18:05:22+02:00" />
 
 
   </head>
@@ -83,7 +83,7 @@
 <h2 id="introduziione">Introduziione</h2>
 <h3 id="tldr">TL;DR</h3>
 <p>Questo è il primo tutorial che pubblico, vi prego di avere pietà e perdonarmi se suona un po&rsquo; &lsquo;aranzullese&rsquo;.
-Se siete capitati qui googlando e vi serve solo il codice lo trovate su github.  🎉🎉🎉</p>
+Se siete capitati qui googlando e vi serve solo il codice lo trovate su <a href="https://github.com/raphael2692/libero-puppeteer-api">github</a>.  🎉🎉🎉</p>
 <h3 id="fullstack-what"><em>Fullstack what</em>?</h3>
 <p>Ok, il termine è un po&rsquo; pretenzioso. In pratica voglio condividere un progetto che comprenda queste funzioni:</p>
 <ol>
@@ -91,7 +91,7 @@ Se siete capitati qui googlando e vi serve solo il codice lo trovate su github. 
 <li>Creare un client che periodicamente richiami l'API e carichi i dati in un DB</li>
 <li>Creare una web app che consumi i dati di questo DB e crei delle infografiche</li>
 <li>Creare un modello di machine learning che consumi la stessa fonte dati e la &lsquo;serva&rsquo; in un'altra API</li>
-<li>Deployare il tutto su una piattaforma cloud gratuita: <a href="https://dashboard.heroku.com/login">HEROKU</a></li>
+<li>Deployare il tutto su una piattaforma cloud gratuita: <a href="https://dashboard.heroku.com/login">heroku</a></li>
 </ol>
 <p>Ok questa lista è ancora più pretenziosa&hellip;😂</p>
 <h3 id="ma-io-voglio-fare-il-datascientist-perché-dovrebbe-interessarmi-tutta-sta-roba">Ma io voglio fare il <em>Datascientist</em>, perché dovrebbe interessarmi tutta &lsquo;sta roba?</h3>
@@ -201,11 +201,12 @@ tutti i seguenti dati:</p>
 <p>A complicare leggermente le cose è il fatto la struttura <code>h2&gt;a</code> appartiene anche a elementi che non sono titoli, e che non ci interessano.</p>
 <p>Se non vi torna qualcosa di questo snippet probabilmente dovrete ripassare:</p>
 <ul>
-<li>i concetti base di programmazione asincrona con js</li>
+<li>i concetti base di programmazione asincrona con javascript (js)</li>
 <li>il concetto di callback</li>
 <li>l'oggetto Promise</li>
 <li>il concetto di deserializzazione</li>
 </ul>
+<p>Perché javascript? Javascript è il linguaggio alla base dell'interazione tra browser web. L'obiettivo di questa guida è aprire qualche orizzonte rispetto al solito stack di strumenti da datascientist (python/R). Se per voi è nuovo, vale la pena perdere un po&rsquo; di tempo per capire come funziona il web e javascript. I temi che ho elencato sopra sono trattati approfonditamente su <a href="https://developer.mozilla.org/it/">MDN (Mozzilla Developers Network)</a>.</p>
 <p>Notare l'utilizzo di una shotcut <code>{data}</code> per nestare tutto in un solo array, per evitare problemi di deserializzazione tra browser.</p>
 <p>L'ultima riga serve a esportare questa funzione e renderla richiamabile da un altro script js. Il tutto è nestato in un blocco <code>try/catch/finally</code> per evitare memory leaks 
 e debuggure gli errori più facilmente.</p>
@@ -255,8 +256,8 @@ e debuggure gli errori più facilmente.</p>
     <span style="color:#f92672">&#34;date&#34;</span>:<span style="color:#e6db74">&#34;2020-06-05T15:06:34.487Z&#34;</span>
     }
 
-</code></pre></div><h2 id="conclusioni">Conclusioni</h2>
-<p>E questo è quanto. Nella prossima mostrerò come creare un database relazionale (postgree) all'interno di un cloud gratuito e come creare un client python che in automatico periodicamente aggiunga dati da questa API (o magari un'altra!).</p>
+</code></pre></div><h2 id="nelle-prossime-puntate">Nelle prossime puntate</h2>
+<p>E questo è quanto. Nella prossima mostrerò come creare un database relazionale (<a href="https://www.postgresql.org/">postgreeSQL</a>) all'interno di un cloud gratuito (heroku) e come creare un client python che in automatico periodicamente aggiunga dati da questa API (o magari un'altra!).</p>
 
     </div>
     <div class="post-footer">
