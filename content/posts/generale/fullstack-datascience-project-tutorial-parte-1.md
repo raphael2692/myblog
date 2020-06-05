@@ -31,7 +31,7 @@ Ok, il termine è un po' pretenzioso. In pratica voglio condividere un progetto 
 2. Creare un client che periodicamente richiami l'API e carichi i dati in un DB
 3. Creare una web app che consumi i dati di questo DB e crei delle infografiche 
 4. Creare un modello di machine learning che consumi la stessa fonte dati e la 'serva' in un'altra API
-5. Deployare il tutto su una piattaforma cloud gratuita: [HEROKU](https://dashboard.heroku.com/login)
+5. Deployare il tutto su una piattaforma cloud gratuita: [heroku](https://dashboard.heroku.com/login)
 
 Ok questa lista è ancora più pretenziosa...😂
 
@@ -160,10 +160,12 @@ A complicare leggermente le cose è il fatto la struttura ```h2>a``` appartiene 
 
 Se non vi torna qualcosa di questo snippet probabilmente dovrete ripassare:
 
-- i concetti base di programmazione asincrona con js
+- i concetti base di programmazione asincrona con javascript (js)
 - il concetto di callback
 - l'oggetto Promise
 - il concetto di deserializzazione
+
+Perché javascript? Javascript è il linguaggio alla base dell'interazione tra browser web. L'obiettivo di questa guida è aprire qualche orizzonte rispetto al solito stack di strumenti da datascientist (python/R). Se per voi è nuovo, vale la pena perdere un po' di tempo per capire come funziona il web e javascript. I temi che ho elencato sopra sono trattati approfonditamente su [MDN (Mozzilla Developers Network)](https://developer.mozilla.org/it/). 
 
 Notare l'utilizzo di una shotcut ```{data}``` per nestare tutto in un solo array, per evitare problemi di deserializzazione tra browser.
 
@@ -222,9 +224,22 @@ E il risultato dell'interrogazione è il seguente (3 di 65 risultati):
     }
 
 ```
-## Conclusioni
+## Nelle prossime puntate
 
-E questo è quanto. Nella prossima mostrerò come creare un database relazionale (postgree) all'interno di un cloud gratuito e come creare un client python che in automatico periodicamente aggiunga dati da questa API (o magari un'altra!).
+E questo è quanto. Nella prossima mostrerò come creare un database relazionale ([postgreeSQL](https://www.postgresql.org/)) all'interno di un cloud gratuito (heroku) e come creare un client python che in automatico periodicamente aggiunga dati da questa API (o magari un'altra!). 
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
