@@ -8,7 +8,7 @@ tags:
 - progetti
 - tutorial
 - datascience
-title: "Fullstack Datascience (parte I): Creare un API personalizza con node, express e puppeteer!"
+title: "Fullstack Datascience (parte I): Creare un API personalizzata con node, express e puppeteer!"
 ---
 
 # Fullstack Datascience (parte I)
