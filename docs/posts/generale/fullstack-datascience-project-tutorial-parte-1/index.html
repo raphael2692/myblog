@@ -19,7 +19,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.raffaelespataro.it/posts/generale/fullstack-datascience-project-tutorial-parte-1/" />
 <meta property="article:published_time" content="2020-06-05T12:48:08+01:00" />
-<meta property="article:modified_time" content="2020-06-05T19:13:09+02:00" />
+<meta property="article:modified_time" content="2020-06-05T20:12:17+02:00" />
 
 
   </head>
@@ -83,7 +83,7 @@
 <h2 id="introduzione">Introduzione</h2>
 <h3 id="tldr">TL;DR</h3>
 <p>Questo è il primo tutorial che pubblico, vi prego di avere pietà e perdonarmi se suona un po&rsquo; &lsquo;aranzullese&rsquo;.
-Se siete capitati qui googlando e vi serve solo il codice lo trovate su <a href="https://github.com/raphael2692/libero-puppeteer-api">github</a>.  🎉🎉🎉</p>
+Se siete capitati qui googlando e vi serve solo il codice lo trovate su <a href="https://github.com/raphael2692/libero-puppeteer-api">Github</a>.  🎉🎉🎉</p>
 <h3 id="fullstack-what"><em>Fullstack what</em>?</h3>
 <p>Ok, il termine è un po&rsquo; pretenzioso. In pratica voglio condividere un progetto che comprenda queste funzioni:</p>
 <ol>
@@ -94,12 +94,9 @@ Se siete capitati qui googlando e vi serve solo il codice lo trovate su <a href=
 <li>Deployare il tutto su una piattaforma cloud gratuita: <a href="https://dashboard.heroku.com/login">heroku</a></li>
 </ol>
 <p>Ok questa lista è ancora più pretenziosa&hellip;😂</p>
-<h3 id="ma-io-voglio-fare-il-datascientist-perché-dovrebbe-interessarmi-tutta-sta-roba">Ma io voglio fare il <em>Datascientist</em>, perché dovrebbe interessarmi tutta &lsquo;sta roba?</h3>
-<p>Se come me lavori in questo settore da qualche tempo probabilmente già lo sai, altrimenti&hellip;è un modo (spero) divertente per familiarizzare con tecnologie che 
-ti troverai a utilizzare tutti i giorni.</p>
-<h3 id="la-mission-del-datascientist-creare-valore-dai-dati">La mission del <em>Datascientist</em>: creare valore dai dati&hellip;</h3>
-<p>&hellip;e altri spot accalappiasghei che circolando sul web: cosa vogliono dire esattamente? Probabilmente nulla. Ma sedovessi scommettere tra assumere 
-un dottore in astrofisica per migliorare l'accuratezza di un modello open source dal 99,8% al 99,9% e assumerne un altro che mastichi un po&rsquo; di backend preferirei sicuramente il secondo. Ok scherzo, in realtà scrivo così perché non ho un dottorato in astrofisica 😔&hellip;</p>
+<h3 id="ma-io-voglio-fare-il-datascientist-perché-dovrebbe-interessarmi-tutta-sta-roba">Ma io voglio fare il <em>Datascientist</em>, perché dovrebbe interessarmi tutta <em>&lsquo;sta roba</em>?</h3>
+<p>Se lavorate in questo settore da qualche tempo probabilmente lo sapete, altrimenti&hellip;è un modo (spero) divertente per familiarizzare con tecnologie che 
+probabilmente vi troverete a utilizzare tutti i giorni.</p>
 <h2 id="parte-i-creare-una-fonte-di-dati">Parte I: Creare una fonte di dati</h2>
 <h3 id="nella-vita-esistono-diversi-gradi-di-swag">Nella vita esistono diversi gradi di <em>swag</em>&hellip;</h3>
 <ol>
@@ -207,7 +204,7 @@ tutti i seguenti dati:</p>
 <li>le funzioni arrow</li>
 <li>il concetto di deserializzazione</li>
 </ul>
-<p>Perché javascript? Javascript è il linguaggio alla base dell'interazione tra browser web. L'obiettivo di questa guida è aprire qualche orizzonte rispetto al solito stack di strumenti da datascientist (python/R). Se per voi è nuovo, vale la pena perdere un po&rsquo; di tempo per capire come funziona il web e javascript. I temi che ho elencato sopra sono trattati approfonditamente su <a href="https://developer.mozilla.org/it/">MDN (Mozzilla Developers Network)</a>.</p>
+<p>Vale la pena masticare un po&rsquo; di js? Sì, js è il linguaggio alla base dell'interazione tra browser web. L'obiettivo di questa guida è aprire qualche orizzonte rispetto al solito stack di strumenti da datascientist (python/R). I temi che ho elencato sopra sono trattati approfonditamente su <a href="https://developer.mozilla.org/it/">MDN (Mozilla Developers Network)</a>.</p>
 <p>Notare l'utilizzo di una shotcut <code>{data}</code> per nestare tutto in un solo array, per evitare problemi di deserializzazione tra browser.</p>
 <p>L'ultima riga serve a esportare questa funzione e renderla richiamabile da un altro script js. Il tutto è nestato in un blocco <code>try/catch/finally</code> per evitare memory leaks 
 e debuggure gli errori più facilmente.</p>

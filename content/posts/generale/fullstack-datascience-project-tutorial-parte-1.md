@@ -22,7 +22,7 @@ title: "Fullstack Datascience (parte I): Creare un API personalizzata con node, 
 
 ### TL;DR
 Questo è il primo tutorial che pubblico, vi prego di avere pietà e perdonarmi se suona un po' 'aranzullese'.
-Se siete capitati qui googlando e vi serve solo il codice lo trovate su [github](https://github.com/raphael2692/libero-puppeteer-api).  🎉🎉🎉
+Se siete capitati qui googlando e vi serve solo il codice lo trovate su [Github](https://github.com/raphael2692/libero-puppeteer-api).  🎉🎉🎉
 
 ### *Fullstack what*?
 Ok, il termine è un po' pretenzioso. In pratica voglio condividere un progetto che comprenda queste funzioni:
@@ -35,15 +35,10 @@ Ok, il termine è un po' pretenzioso. In pratica voglio condividere un progetto 
 
 Ok questa lista è ancora più pretenziosa...😂
 
-### Ma io voglio fare il *Datascientist*, perché dovrebbe interessarmi tutta 'sta roba?
+### Ma io voglio fare il *Datascientist*, perché dovrebbe interessarmi tutta *'sta roba*?
 
-Se come me lavori in questo settore da qualche tempo probabilmente già lo sai, altrimenti...è un modo (spero) divertente per familiarizzare con tecnologie che 
-ti troverai a utilizzare tutti i giorni.  
-
-### La mission del *Datascientist*: creare valore dai dati...
-
-...e altri spot accalappiasghei che circolando sul web: cosa vogliono dire esattamente? Probabilmente nulla. Ma sedovessi scommettere tra assumere 
-un dottore in astrofisica per migliorare l'accuratezza di un modello open source dal 99,8% al 99,9% e assumerne un altro che mastichi un po' di backend preferirei sicuramente il secondo. Ok scherzo, in realtà scrivo così perché non ho un dottorato in astrofisica 😔...
+Se lavorate in questo settore da qualche tempo probabilmente lo sapete, altrimenti...è un modo (spero) divertente per familiarizzare con tecnologie che 
+probabilmente vi troverete a utilizzare tutti i giorni.  
 
 
 ## Parte I: Creare una fonte di dati
@@ -166,7 +161,7 @@ Se non vi torna qualcosa di questo snippet probabilmente dovrete ripassare:
 - le funzioni arrow
 - il concetto di deserializzazione
 
-Perché javascript? Javascript è il linguaggio alla base dell'interazione tra browser web. L'obiettivo di questa guida è aprire qualche orizzonte rispetto al solito stack di strumenti da datascientist (python/R). Se per voi è nuovo, vale la pena perdere un po' di tempo per capire come funziona il web e javascript. I temi che ho elencato sopra sono trattati approfonditamente su [MDN (Mozzilla Developers Network)](https://developer.mozilla.org/it/). 
+Vale la pena masticare un po' di js? Sì, js è il linguaggio alla base dell'interazione tra browser web. L'obiettivo di questa guida è aprire qualche orizzonte rispetto al solito stack di strumenti da datascientist (python/R). I temi che ho elencato sopra sono trattati approfonditamente su [MDN (Mozilla Developers Network)](https://developer.mozilla.org/it/). 
 
 Notare l'utilizzo di una shotcut ```{data}``` per nestare tutto in un solo array, per evitare problemi di deserializzazione tra browser.
 
