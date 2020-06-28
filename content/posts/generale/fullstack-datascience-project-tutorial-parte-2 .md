@@ -9,7 +9,7 @@ tags:
 - progetti
 - tutorial
 - datascience
-title: "Fullstack Datascience (parte II): Deployare un API su cloud, connetterla a un DB e automatizzare l'upload tramite interrogazione REST"
+title: "Fullstack Datascience (parte II): Deployare un API su cloud, connetterla a un DB e automatizzare l'upload di dati"
 
 ---
 
