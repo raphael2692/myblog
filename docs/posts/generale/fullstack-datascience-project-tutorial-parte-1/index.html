@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en-us">
   <head>
-    <title>Fullstack Datascience (parte I): Creare un API personalizzata con node, express e puppeteer! // Raffaele Spataro</title>
+    <title>Fullstack Datascience (parte I): Creare un&#39;API personalizzata con node, express e puppeteer! // Raffaele Spataro</title>
     <meta charset="utf-8" />
     <meta name="generator" content="Hugo 0.62.2" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -11,15 +11,15 @@
 
     
     <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Fullstack Datascience (parte I): Creare un API personalizzata con node, express e puppeteer!"/>
+<meta name="twitter:title" content="Fullstack Datascience (parte I): Creare un&#39;API personalizzata con node, express e puppeteer!"/>
 <meta name="twitter:description" content="Come creare un progetto datascience fullstack. Prima parte, creare un API personalizza con node, express e puppeteer!"/>
 
-    <meta property="og:title" content="Fullstack Datascience (parte I): Creare un API personalizzata con node, express e puppeteer!" />
+    <meta property="og:title" content="Fullstack Datascience (parte I): Creare un&#39;API personalizzata con node, express e puppeteer!" />
 <meta property="og:description" content="Come creare un progetto datascience fullstack. Prima parte, creare un API personalizza con node, express e puppeteer!" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.raffaelespataro.it/posts/generale/fullstack-datascience-project-tutorial-parte-1/" />
 <meta property="article:published_time" content="2020-06-05T12:48:08+01:00" />
-<meta property="article:modified_time" content="2020-06-05T20:12:17+02:00" />
+<meta property="article:modified_time" content="2020-06-07T00:28:18+02:00" />
 
 
   </head>
@@ -51,7 +51,7 @@
       
   <article class="post">
     <header class="post-header">
-      <h1 class ="post-title">Fullstack Datascience (parte I): Creare un API personalizzata con node, express e puppeteer!</h1>
+      <h1 class ="post-title">Fullstack Datascience (parte I): Creare un&#39;API personalizzata con node, express e puppeteer!</h1>
       <div class="post-meta">
         <div>
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
@@ -78,7 +78,11 @@
 <hr>
 <h2 id="indice">Indice</h2>
 <h3 id="introduzioneintroduzione"><a href="#Introduzione">Introduzione</a></h3>
-<h3 id="parte-i-creare-una-fonte-di-datiparte-i-creare-una-fonte-di-dati"><a href="#parte-i-creare-una-fonte-di-dati">Parte I: Creare una fonte di dati</a></h3>
+<h3 id="creare-una-fonte-di-daticreare-una-fonte-di-dati"><a href="#creare-una-fonte-di-dati">Creare una fonte di dati</a></h3>
+<h3 id="scrapingscraping"><a href="#scraping">Scraping</a></h3>
+<h3 id="serverserver"><a href="#server">Server</a></h3>
+<h3 id="risultatorisultato"><a href="#risultato">Risultato</a></h3>
+<h3 id="nelle-prossime-puntatenelle-prossime-puntate"><a href="#nelle-prossime-puntate">Nelle prossime puntate</a></h3>
 <hr>
 <h2 id="introduzione">Introduzione</h2>
 <h3 id="tldr">TL;DR</h3>
@@ -97,7 +101,7 @@ Se siete capitati qui googlando e vi serve solo il codice lo trovate su <a href=
 <h3 id="ma-io-voglio-fare-il-datascientist-perché-dovrebbe-interessarmi-tutta-sta-roba">Ma io voglio fare il <em>Datascientist</em>, perché dovrebbe interessarmi tutta <em>&lsquo;sta roba</em>?</h3>
 <p>Se lavorate in questo settore da qualche tempo probabilmente lo sapete, altrimenti&hellip;è un modo (spero) divertente per familiarizzare con tecnologie che 
 probabilmente vi troverete a utilizzare tutti i giorni.</p>
-<h2 id="parte-i-creare-una-fonte-di-dati">Parte I: Creare una fonte di dati</h2>
+<h2 id="creare-una-fonte-di-dati">Creare una fonte di dati</h2>
 <h3 id="nella-vita-esistono-diversi-gradi-di-swag">Nella vita esistono diversi gradi di <em>swag</em>&hellip;</h3>
 <ol>
 <li>Lavorare su dati tabulari statici (ad es. il leggendario Iris Dataset)</li>
@@ -112,7 +116,7 @@ probabilmente vi troverete a utilizzare tutti i giorni.</p>
 <li>Che tipo di testi posso cercare? Qualcosa di breve, ma nemmeno banale come i tag dei prodotti di amazon&hellip;i titoli di un giornale!</li>
 <li>Ok, quale giornale? Qualcosa di divertente, così mi annoio di meno durante i test&hellip;*<em>idea malvagia</em>* <strong>Libero</strong>!</li>
 </ul>
-<h3 id="come-funziona">Come funziona</h3>
+<h3 id="scraping">Scraping</h3>
 <p><img src="/articolo_libero.png" alt="giornalismo di qualità"></p>
 <p>Quest'artistico titolo e tutti i suoi fratellini si trovano da qualche parte nella pagina html del sito <a href="https://www.liberoquotidiano.it/">liberoquotidiano.it</a>.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">h2</span>&gt;
@@ -208,6 +212,7 @@ tutti i seguenti dati:</p>
 <p>Notare l'utilizzo di una shotcut <code>{data}</code> per nestare tutto in un solo array, per evitare problemi di deserializzazione tra browser.</p>
 <p>L'ultima riga serve a esportare questa funzione e renderla richiamabile da un altro script js. Il tutto è nestato in un blocco <code>try/catch/finally</code> per evitare memory leaks 
 e debuggure gli errori più facilmente.</p>
+<h2 id="server">Server</h2>
 <p>Una volta definita questa funzione, dobbiamo fare in modo che questa venga eseguita su richiesta. Grazie a express creare un web server è estramente intuitivo. La nostra funzione <code>fetch()</code> verrà eseguita ogni qualvolta un client (un browser) cercherà di andare all'indirizzo <strong>https://localhost:3000/liberoquotidiano</strong>.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">
 <span style="color:#75715e">// app.js 
@@ -231,12 +236,15 @@ e debuggure gli errori più facilmente.</p>
 <span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">listen</span>(<span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">PORT</span> <span style="color:#f92672">||</span> <span style="color:#ae81ff">3000</span>,
     () =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Server is running...&#34;</span>));
 
-</code></pre></div><p>E il risultato dell'interrogazione è il seguente (3 di 65 risultati):</p>
+</code></pre></div><h2 id="risultato">Risultato</h2>
+<p>E il risultato dell'interrogazione è il seguente (3 di 65 risultati):</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">
 {<span style="color:#f92672">&#34;data&#34;</span>:[
     {
-    <span style="color:#f92672">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;23076053&#34;</span>,<span style="color:#f92672">&#34;text&#34;</span>:<span style="color:#e6db74">&#34;\&#34;Volano parole grosse\&#34;. L&#39;accordo di Arcore è superato: Meloni-Salvini, contrasti sulle amministrative&#34;</span>,
-    <span style="color:#f92672">&#34;href&#34;</span>:<span style="color:#e6db74">&#34;https://www.liberoquotidiano.it/news/politica/23076053/meloni-salvini-contrasti-amministrative-volano-parole-grosse-accordo-arcore-superato.html&#34;</span>,<span style="color:#f92672">&#34;source&#34;</span>:<span style="color:#e6db74">&#34;LiberoQuotidiano&#34;</span>,
+    <span style="color:#f92672">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;23076053&#34;</span>,
+    <span style="color:#f92672">&#34;text&#34;</span>:<span style="color:#e6db74">&#34;\&#34;Volano parole grosse\&#34;. L&#39;accordo di Arcore è superato: Meloni-Salvini, contrasti sulle amministrative&#34;</span>,
+    <span style="color:#f92672">&#34;href&#34;</span>:<span style="color:#e6db74">&#34;https://www.liberoquotidiano.it/news/politica/23076053/meloni-salvini-contrasti-amministrative-volano-parole-grosse-accordo-arcore-superato.html&#34;</span>,
+    <span style="color:#f92672">&#34;source&#34;</span>:<span style="color:#e6db74">&#34;LiberoQuotidiano&#34;</span>,
     <span style="color:#f92672">&#34;date&#34;</span>:<span style="color:#e6db74">&#34;2020-06-05T15:06:34.487Z&#34;</span>
     },
     {
@@ -255,7 +263,7 @@ e debuggure gli errori più facilmente.</p>
     }
 
 </code></pre></div><h2 id="nelle-prossime-puntate">Nelle prossime puntate</h2>
-<p>E questo è quanto. Nella prossima mostrerò come creare un database relazionale (<a href="https://www.postgresql.org/">postgreeSQL</a>) all'interno di un cloud gratuito (heroku) e come creare un client python che in automatico periodicamente aggiunga dati da questa API (o magari un'altra!).</p>
+<p>E questo è quanto. Nella prossima mostrerò come creare un database relazionale (<a href="https://www.postgresql.org/">postgreSQL</a>) all'interno di un cloud gratuito (heroku) e come creare un client python che in automatico periodicamente aggiunga dati da questa API (o magari un'altra!).</p>
 
     </div>
     <div class="post-footer">

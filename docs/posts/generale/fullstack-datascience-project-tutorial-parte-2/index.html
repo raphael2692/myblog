@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Fullstack Datascience (parte II): Deployare un API su cloud, connetterla a un DB e automatizzare l&#39;upload tramite interrogazione REST // Raffaele Spataro</title>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.62.2" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Raffaele Spataro" />
+    <meta name="description" content="Come creare un progetto datascience fullstack. Deployare un API su cloud (Heroku), creare un db online (postgre, Heroku) e un client per automatizzare l&#39;interrogazione all&#39;API e l&#39;upload dei dati (python, flask)" />
+    <link rel="stylesheet" href="https://www.raffaelespataro.it/css/main.min.ef42b67ede4c3cf0fb788c8c389448e2baee59699ae13db46defa6734d371849.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Fullstack Datascience (parte II): Deployare un API su cloud, connetterla a un DB e automatizzare l&#39;upload tramite interrogazione REST"/>
+<meta name="twitter:description" content="Come creare un progetto datascience fullstack. Deployare un API su cloud (Heroku), creare un db online (postgre, Heroku) e un client per automatizzare l&#39;interrogazione all&#39;API e l&#39;upload dei dati (python, flask)"/>
+
+    <meta property="og:title" content="Fullstack Datascience (parte II): Deployare un API su cloud, connetterla a un DB e automatizzare l&#39;upload tramite interrogazione REST" />
+<meta property="og:description" content="Come creare un progetto datascience fullstack. Deployare un API su cloud (Heroku), creare un db online (postgre, Heroku) e un client per automatizzare l&#39;interrogazione all&#39;API e l&#39;upload dei dati (python, flask)" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.raffaelespataro.it/posts/generale/fullstack-datascience-project-tutorial-parte-2/" />
+<meta property="article:published_time" content="2020-06-05T12:48:08+01:00" />
+<meta property="article:modified_time" content="2020-06-05T12:48:08+01:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://www.raffaelespataro.it/"><img class="app-header-avatar" src="/avataaars.png" alt="Raffaele Spataro" /></a>
+      <h1>Raffaele Spataro</h1>
+      <p>Per gli amici Raffa. Appassionato di datascience, programmazione e filosofia. Credo in un futuro digitale e senza pregiudizi.</p>
+      <div class="app-header-social">
+        
+          <a target="_blank" href="https://www.linkedin.com/in/raffaele-spataro-44194b57/" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-linkedin">
+  <title>linkedin</title>
+  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle>
+</svg></a>
+        
+          <a target="_blank" href="https://github.com/raphael2692" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg></a>
+        
+          <a target="_blank" href="https://twitter.com/raffaele2692" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-twitter">
+  <title>twitter</title>
+  <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+</svg></a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Fullstack Datascience (parte II): Deployare un API su cloud, connetterla a un DB e automatizzare l&#39;upload tramite interrogazione REST</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Jun 5, 2020
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          6 min read
+        </div><div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag">
+  <title>tag</title>
+  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line>
+</svg>
+          <a class="tag" href="https://www.raffaelespataro.it/tags/progetti/">progetti</a><a class="tag" href="https://www.raffaelespataro.it/tags/tutorial/">tutorial</a><a class="tag" href="https://www.raffaelespataro.it/tags/datascience/">datascience</a></div></div>
+    </header>
+    <div class="post-content">
+      <h1 id="fullstack-datascience-parte-ii">Fullstack Datascience (parte II)</h1>
+<hr>
+<h2 id="indice">Indice</h2>
+<h3 id="introduzioneintroduzione"><a href="#Introduzione">Introduzione</a></h3>
+<h3 id="deploy-di-libero-api-su-herokudeploy-di-libero-api-su-heroku"><a href="#deploy-di-libero-api-su-heroku">Deploy di libero-API su Heroku</a></h3>
+<h3 id="creare-un-db-postgre-su-herokucreare-un-db-postgre-su-heroku"><a href="#creare-un-db-postgre-su-heroku">Creare un db postgre su Heroku</a></h3>
+<h3 id="creare-il-client-con-flaskcreare-il-client-con-flask"><a href="#creare-il-client-con-flask">Creare il client con flask</a></h3>
+<h3 id="nelle-prossime-puntatenelle-prossime-puntate"><a href="#nelle-prossime-puntate">Nelle prossime puntate</a></h3>
+<hr>
+<h2 id="introduzione">Introduzione</h2>
+<p>In questa parte di tutorial facciamo il deploy dell&rsquo;<a href="https://www.raffaelespataro.it/posts/generale/fullstack-datascience-project-tutorial-parte-1/">app di scraping creata precedentemente</a> sulla piattaforma Heroku. In questo modo la nostra app diventa una vera e propria web API, che risponderà con un JSON quando interrogata a un certo indirizzo.</p>
+<p>Ci sono molti modi in cui possiamo utilizzare un'app configurata in questo modo. Ad esempio potremmo costruire un nuovo &lsquo;front-end&rsquo; del quotidiano Libero, magari da integrare in un app mobile di notizie (la maggiorparte di applicazioni di notizie su android e ios funzionano sotto la scocca in maniera analoga).</p>
+<p>Nel caso di un'applicazione datacentrica, sia che vogliamo creare visualizzazioni interessanti, sia che vogliamo creare un modello di machine learning, ci interessa avere a disposizioni più dati possibile.</p>
+<p>Per questo creeremo un databse online dove immagazzinare, con un un altro servizio, tutti i nostri dati.</p>
+<p><img src="/heroku_banner.png" alt="banner heroku"></p>
+<h2 id="deploy-di-libero-api-su-heroku">Deploy di libero-API su Heroku</h2>
+<p>Heroku è una piattaforma ideale per questo tipo di esperimenti. Sia perché è gratis, sia perchè è molto semplice da usare. In pratica, se conoscete git, deployare un'app su Heroku coincide al 90% con il processo di pushare un repository su un host come github o gitlab.</p>
+<p>Per iniziare, bisogna innanzitutto creare un'utenza sul sito ufficiale di <a href="https://devcenter.heroku.com/">Heroku</a>.</p>
+<p>🚀 <strong>Pro-tip</strong>: se volete sperimentare, non usate la vostra e-mail principale, ma createne una <a href="https://temp-mail.org/it/">usa e getta</a>.</p>
+<p>Una volta creato un account, dovete installare il client Heroku sul vostro PC. Si tratta di uno strumento a linea di comando, <a href="https://devcenter.heroku.com/articles/heroku-cli">Heroku CLI</a>. Heroku supporta tutte le piattaforme, ma con dei limiti. Infatti su windows, con alcuni framework, tipo flask, non funziona il comando <code>heroku local</code> che permette di simulare in locale il funzionamento dell'applicazione, per un deploy senza sorprese. Per questo suggerisco di usare linux, o seguire il tip di seguito.</p>
+<p>🚀 <strong>Pro-tip</strong>: si tratta di un passaggio opzionale, ma se volete semplificarvi la vita nello sviluppo di piccoli progetti su windows, potete abilitare il <a href="https://docs.microsoft.com/it-it/windows/wsl/install-win10">sottosistema linux per windows</a>. Unito al <a href="https://github.com/microsoft/terminal">nuovo terminale windows</a> (ci sono le schede, horray), è davvero comodo, e vi permetterà di sviluppare più velocemente.</p>
+<p>Una volta installata la heroku cli, per deployare la nostra app, <a href="https://www.raffaelespataro.it/posts/generale/fullstack-datascience-project-tutorial-parte-1/">&lsquo;libero-API&rsquo;</a> non dobbiamo far altro che recarci nella directory del nostro progetto, inizializzare un repo e pusharlo su heroku:</p>
+<pre><code class="language-terminal" data-lang="terminal">
+git init
+git add .
+git git commit -m &quot;conoscete git, giusto? ;)&quot;
+
+heroku login
+
+***
+Vi verranno chieste le creadenziali
+***
+
+heroku create &lt;nome-applicazione&gt;
+git push heroku master
+
+***
+A console apparirà il log di installazione della vostra app su Heroku. 
+Se il processo va a buon fine leggerete il mitologico: BUILD SUCCESS e un URL alla vostra app
+***
+
+</code></pre><p>Aaand <em>that's it</em>,  libero API è pronto a distillare trollagine all'end-point &lsquo;&lt;heroku-app-url&gt;/liberoquotidiano&rsquo;.</p>
+<p>Per monitorare lo stato dell'app direttamente dal terminale, si può digitare <code>heroku console</code> dalla dir del progetto.</p>
+<h2 id="creare-un-db-postgre-su-heroku">Creare un db postgre su Heroku</h2>
+<p>Per quest'esperimento basterà eseguire tutte le operazioni da web ed eseguire queste operazioni:</p>
+<ol>
+<li>Connettersi al proprio account web Heroku</li>
+<li>Creare una nuova applicazione web, ad es. &ldquo;my-db&rdquo;</li>
+<li>Dirigersi a quest'URL (sostituire la stringa tra tag): <code>https://dashboard.heroku.com/apps/&lt;my-db&gt;/resources</code></li>
+<li>Nella bassa di ricerca degli add-on aggiungere &ldquo;Heroku Postgre&rdquo;</li>
+<li>Una volta creato il db, lo troverete elencato a questo URL: <a href="https://data.heroku.com/datastores">https://data.heroku.com/datastores</a></li>
+<li>Una volta selezionato &ldquo;my-db&rdquo; navigare sul pannello settings e copiarsi da qualche parte l&rsquo;<strong>URI</strong>. L'URI continene in un'unica stringa l'indirizzo del vostro db e le credenziali di accesso.</li>
+</ol>
+<h2 id="creare-il-client-con-flask">Creare il client con flask</h2>
+<p>Ora che abbiamo un API e un database, non ci resta altro che creare un app che li metta in comunicazione. Potrebbe essere realizzata con qualasiasi linguaggio, 
+ma in questo caso useremo python3 (3.7.x) e un framework chiamato flask. In questo modo oltre a risparmiarci molto &lsquo;boilerplate&rsquo; e rendere più intuitivo il codice, potremo utilizzare strumenti familiari in ambito datascience, in primis pandas.</p>
+<p>Di seguito uno screen della dir di progetto:</p>
+<p><img src="/screen_libero_data_uploader.png" alt="banner heroku"></p>
+<p>Il file app.py contiente tutto il codice a far partire la nostra web app, che è formata da un end-point minimale su &ldquo;/&rdquo; e dalla chiamata allo script di interrogazione dell'API/upload, &lsquo;datauploader.py&rsquo;. Il file credenziali.txt contiene l'URI del db heroku che ho creato. Il file requirements.txt contiene tutte le dipendenze necessarie al progetto.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
+<span style="color:#75715e"># app.py</span>
+<span style="color:#f92672">from</span> datauploader <span style="color:#f92672">import</span> DataUploader
+<span style="color:#f92672">from</span> flask <span style="color:#f92672">import</span> Flask
+<span style="color:#f92672">import</span> requests
+<span style="color:#f92672">import</span> json
+
+app <span style="color:#f92672">=</span> Flask(__name__)
+
+<span style="color:#a6e22e">@app.route</span>(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">/</span><span style="color:#e6db74">&#39;</span>)
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">main</span>():
+    desc <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">&lt;h1&gt;DB client v 0.1&lt;/h1&gt;</span><span style="color:#e6db74">&#34;</span>
+    <span style="color:#66d9ef">return</span> desc
+
+
+<span style="color:#a6e22e">@app.route</span>(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">/updatedb</span><span style="color:#e6db74">&#39;</span>)
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">updatedb</span>():
+    db <span style="color:#f92672">=</span> DataUploader(db_url<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">&lt;uri del vostro db&gt;</span><span style="color:#e6db74">&#34;</span>,resource_url<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">&lt;url della vostra app Heroku&gt;/liberoquotidiano</span><span style="color:#e6db74">&#34;</span>)
+    <span style="color:#66d9ef">return</span> db<span style="color:#f92672">.</span>upload_data()
+    
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">__main__</span><span style="color:#e6db74">&#39;</span>:
+    <span style="color:#75715e"># Threaded option to enable multiple instances for multiple user access support</span>
+    app<span style="color:#f92672">.</span>run(threaded<span style="color:#f92672">=</span>True, port<span style="color:#f92672">=</span><span style="color:#ae81ff">5000</span>)
+
+</code></pre></div><p>🚀 <strong>Pro-tip</strong>: per evitare di incasinarvi il python di sistema, create sempre un virtual-enviroment nella vostra cartella di progetto con questi comandi (unix), ricordando di aggiungere al file .gitignore il path &lt;my-env&gt;:</p>
+<pre><code class="language-terminal" data-lang="terminal">python3 -m venv &lt;my-env&gt;
+source &lt;my-env&gt;/bin/activate
+pip install pip --upgrade
+pip install -r requirements.txt
+</code></pre><p>Lo script che esegue l'interrogazione e il caricamento dati è il file datauploader.py. Grazie a python e un pizzico di commenti il suo funzionamento è praticamente auto-esplicativo. L'unica nota che sottolineo è l'utilizzo di due livelli di astrazione per l'upload. Infatti invece di utilizzare una query SQL scritta manualmente, utilizzo un <a href="https://www.fullstackpython.com/object-relational-mappers-orms.html">ORM</a>(Object-relational Mapper), sqlalchemy. Inoltre, invece di caricare strutture dati &lsquo;vanilla&rsquo; utilizzo la struttura <code>DataFrame</code> di pandas. Inoltre, come sottolineato nell'articolo precedente, è molto importante wrappare tutto in un blocco try/except/finally che eviti che certe risposte o processi rimangano accesi in caso di errore.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
+<span style="color:#75715e"># datauploaer.py</span>
+
+<span style="color:#f92672">from</span> sqlalchemy.types <span style="color:#f92672">import</span> Integer, Text, String, DateTime
+<span style="color:#f92672">import</span> pandas <span style="color:#f92672">as</span> pd
+<span style="color:#f92672">import</span> sys
+<span style="color:#f92672">import</span> requests
+<span style="color:#f92672">from</span> sqlalchemy <span style="color:#f92672">import</span> create_engine
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DataUploader</span>:
+    <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;&#34;&#34;</span><span style="color:#e6db74"></span><span style="color:#e6db74">
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">    Parametri: </span><span style="color:#e6db74">
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">        db_url: url del database completo di credenziali d</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">accesso</span><span style="color:#e6db74">
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">        resource_url: url della risorsa/API (JSON) da richiedere sul web</span><span style="color:#e6db74">
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">    </span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+
+    <span style="color:#66d9ef">def</span> __init__(self, db_url, resource_url):
+        self<span style="color:#f92672">.</span>db_url <span style="color:#f92672">=</span> db_url
+        self<span style="color:#f92672">.</span>resource_url <span style="color:#f92672">=</span> resource_url
+        <span style="color:#66d9ef">pass</span>
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">request_data</span>(self):
+        <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;&#34;&#34;</span><span style="color:#e6db74"></span><span style="color:#e6db74">
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">        Parametri:</span><span style="color:#e6db74">
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">            resource_url: url della risorsa json</span><span style="color:#e6db74">
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">        Output:</span><span style="color:#e6db74">
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">            File JSON</span><span style="color:#e6db74">
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">        </span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+
+        request <span style="color:#f92672">=</span> requests<span style="color:#f92672">.</span>get(self<span style="color:#f92672">.</span>resource_url)
+
+        <span style="color:#66d9ef">if</span> request<span style="color:#f92672">.</span>ok:
+            <span style="color:#66d9ef">print</span>(<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Connessione ok (200)</span><span style="color:#e6db74">&#34;</span>)
+            <span style="color:#66d9ef">try</span>:
+                json_data <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span>json()
+                <span style="color:#66d9ef">print</span>(json_data)
+                <span style="color:#66d9ef">return</span> json_data
+            <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">BaseException</span> <span style="color:#66d9ef">as</span> e:
+                <span style="color:#66d9ef">print</span>(<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Errore, i dati non sono quelli attesi: </span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">+</span> e)
+                <span style="color:#66d9ef">print</span>(<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Dati ricevuti:</span><span style="color:#e6db74">&#34;</span>)
+                <span style="color:#66d9ef">print</span>(request<span style="color:#f92672">.</span>content)
+        <span style="color:#66d9ef">else</span>:
+            <span style="color:#66d9ef">print</span>(<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Non c</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">è connessione</span><span style="color:#e6db74">&#34;</span>)
+
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">upload_data</span>(self):
+        <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;&#34;&#34;</span><span style="color:#e6db74"></span><span style="color:#e6db74">
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">        Decrizione:</span><span style="color:#e6db74">
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">            Si connette a un db postgree su heroku e carica una tabella</span><span style="color:#e6db74">
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">        Output:</span><span style="color:#e6db74">
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">            Messaggio di transazione</span><span style="color:#e6db74">
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">        </span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+        <span style="color:#66d9ef">try</span>:
+            engine <span style="color:#f92672">=</span> create_engine(self<span style="color:#f92672">.</span>db_url)  <span style="color:#75715e"># fai una query SQL attraverso Pandas</span>
+            conn <span style="color:#f92672">=</span> engine<span style="color:#f92672">.</span>connect()
+
+            json_data <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>request_data()
+            new_data_df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame(data<span style="color:#f92672">=</span>json_data[<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">data</span><span style="color:#e6db74">&#39;</span>])
+            
+            new_data_df<span style="color:#f92672">.</span>to_sql(<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">liberoQuotidiano</span><span style="color:#e6db74">&#34;</span>,
+                            con<span style="color:#f92672">=</span>engine,
+                            if_exists<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">append</span><span style="color:#e6db74">&#34;</span>,
+                            dtype<span style="color:#f92672">=</span>{
+                                <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">id</span><span style="color:#e6db74">&#34;</span>: Integer,
+                                <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">text</span><span style="color:#e6db74">&#34;</span>: Text,
+                                <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">href</span><span style="color:#e6db74">&#34;</span>: Text,
+                                <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">source</span><span style="color:#e6db74">&#34;</span>: String,
+                                <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">date</span><span style="color:#e6db74">&#34;</span>: DateTime
+                            }
+                            )
+            <span style="color:#75715e"># TEST</span>
+            sql_DF <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_sql_table(<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">liberoQuotidiano</span><span style="color:#e6db74">&#34;</span>, con<span style="color:#f92672">=</span>engine)
+            <span style="color:#66d9ef">print</span>(sql_DF)
+
+            success_message <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Dati inseriti correttamente</span><span style="color:#e6db74">&#34;</span>
+            <span style="color:#66d9ef">return</span> success_message
+
+        <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">BaseException</span> <span style="color:#66d9ef">as</span> e:
+            error_message <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Errore di connessione al DB:</span><span style="color:#e6db74">&#34;</span>
+            <span style="color:#66d9ef">print</span>(e)
+            <span style="color:#66d9ef">return</span> error_message
+
+        <span style="color:#66d9ef">finally</span>:
+            conn<span style="color:#f92672">.</span>close()
+            engine<span style="color:#f92672">.</span>dispose()
+
+</code></pre></div><p>And&hellip;<em>that's it</em>, attivate l'app con il comando <code>flask run</code> e dirigendovi all'endopoint &ldquo;/updatedb&rdquo;, dopo circa 30 sec dovreste ricevere una notifica di corretto inserimento dei dati nel vostro db online. Se volete automatizzare ulteriormente l'update ci sono due opzioni:</p>
+<ol>
+<li>Caricare l'app su Heroku e configurare un add-on gratuito basato su cron.</li>
+<li>Mantenere l'app attiva in locale e automatizare la chiamata tramite un altro scrit python/shell o integrando in flask una chiamata particolare, come indicato <a href="https://stackoverflow.com/questions/21214270/how-to-schedule-a-function-to-run-every-hour-on-flask">qui</a>.</li>
+</ol>
+<p>L'opzione 1, sebbene formalmente più corretta in un'ottica di architettura web, di fatto non funziona con questo particoalre progetto, in quanto il piano &lsquo;free&rsquo; di Heroku non permette timeout maggiori di 30 sec sul webserver utilizzato da flask (gunicorn). Di fatto quindi, dato che lo scraping di libero si è rivelato un task abbastanza lungo, l'applicazione andrà in timeout error il più delle volte.</p>
+<h2 id="nelle-prossime-puntate">Nelle prossime puntate</h2>
+<p>E questo è tutto. Come sempre tutto il codice si trova disponibile su <a href="https://github.com/raphael2692/libero-datauploader">Github</a>. Nel prossimo tutorial mostrerò un esempio di applicazione che consumi i dati raccolti per farci qualcosa di&hellip;carino.</p>
+
+    </div>
+    <div class="post-footer">
+      <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "https-www-raffaelespataro-it" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

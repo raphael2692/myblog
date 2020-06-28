@@ -8,14 +8,18 @@ tags:
 - progetti
 - tutorial
 - datascience
-title: "Fullstack Datascience (parte I): Creare un API personalizzata con node, express e puppeteer!"
+title: "Fullstack Datascience (parte I): Creare un'API personalizzata con node, express e puppeteer!"
 ---
 
 # Fullstack Datascience (parte I)
 * * * 
 ## Indice
 ### [Introduzione](#Introduzione)
-### [Parte I: Creare una fonte di dati](#parte-i-creare-una-fonte-di-dati)
+### [Creare una fonte di dati](#creare-una-fonte-di-dati)
+### [Scraping](#scraping)
+### [Server](#server)
+### [Risultato](#risultato)
+### [Nelle prossime puntate](#nelle-prossime-puntate)
 
 * * * 
 ## Introduzione 
@@ -41,7 +45,7 @@ Se lavorate in questo settore da qualche tempo probabilmente lo sapete, altrimen
 probabilmente vi troverete a utilizzare tutti i giorni.  
 
 
-## Parte I: Creare una fonte di dati
+## Creare una fonte di dati
 
 ### Nella vita esistono diversi gradi di *swag*...
 
@@ -59,7 +63,7 @@ Di seguito vi mostro come ho realizzato il punto 4.
 - Ok, quale giornale? Qualcosa di divertente, così mi annoio di meno durante i test...\**idea malvagia*\* **Libero**!
 
 
-### Come funziona
+### Scraping 
 
 ![giornalismo di qualità](/articolo_libero.png)
 
@@ -168,6 +172,7 @@ Notare l'utilizzo di una shotcut ```{data}``` per nestare tutto in un solo array
 L'ultima riga serve a esportare questa funzione e renderla richiamabile da un altro script js. Il tutto è nestato in un blocco ```try/catch/finally``` per evitare memory leaks 
 e debuggure gli errori più facilmente.
 
+## Server
 Una volta definita questa funzione, dobbiamo fare in modo che questa venga eseguita su richiesta. Grazie a express creare un web server è estramente intuitivo. La nostra funzione ```fetch()``` verrà eseguita ogni qualvolta un client (un browser) cercherà di andare all'indirizzo **https://localhost:3000/liberoquotidiano**.
 
 ```javascript
@@ -194,14 +199,19 @@ app.listen(process.env.PORT || 3000,
     () => console.log("Server is running..."));
 
 ```
+
+## Risultato
+
 E il risultato dell'interrogazione è il seguente (3 di 65 risultati):
 
 ```json
 
 {"data":[
     {
-    "id":"23076053","text":"\"Volano parole grosse\". L'accordo di Arcore è superato: Meloni-Salvini, contrasti sulle amministrative",
-    "href":"https://www.liberoquotidiano.it/news/politica/23076053/meloni-salvini-contrasti-amministrative-volano-parole-grosse-accordo-arcore-superato.html","source":"LiberoQuotidiano",
+    "id":"23076053",
+    "text":"\"Volano parole grosse\". L'accordo di Arcore è superato: Meloni-Salvini, contrasti sulle amministrative",
+    "href":"https://www.liberoquotidiano.it/news/politica/23076053/meloni-salvini-contrasti-amministrative-volano-parole-grosse-accordo-arcore-superato.html",
+    "source":"LiberoQuotidiano",
     "date":"2020-06-05T15:06:34.487Z"
     },
     {
@@ -222,7 +232,7 @@ E il risultato dell'interrogazione è il seguente (3 di 65 risultati):
 ```
 ## Nelle prossime puntate
 
-E questo è quanto. Nella prossima mostrerò come creare un database relazionale ([postgreeSQL](https://www.postgresql.org/)) all'interno di un cloud gratuito (heroku) e come creare un client python che in automatico periodicamente aggiunga dati da questa API (o magari un'altra!). 
+E questo è quanto. Nella prossima mostrerò come creare un database relazionale ([postgreSQL](https://www.postgresql.org/)) all'interno di un cloud gratuito (heroku) e come creare un client python che in automatico periodicamente aggiunga dati da questa API (o magari un'altra!). 
 
 
 
