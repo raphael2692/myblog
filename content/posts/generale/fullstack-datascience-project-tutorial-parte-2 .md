@@ -9,7 +9,7 @@ tags:
 - progetti
 - tutorial
 - datascience
-title: "Fullstack Datascience (parte II): Deployare un API su cloud, connetterla a un DB e automatizzare l'upload di dati"
+title: "Fullstack Datascience (parte II): Deployare un'API su cloud, connetterla a un DB e automatizzare l'upload di dati"
 
 ---
 
@@ -135,7 +135,7 @@ pip install pip --upgrade
 pip install -r requirements.txt
 ```
 
-Lo script che esegue l'interrogazione e il caricamento dati è il file datauploader.py. Grazie a python e un pizzico di commenti il suo funzionamento è praticamente auto-esplicativo. L'unica nota che sottolineo è l'utilizzo di due livelli di astrazione per l'upload. Infatti invece di utilizzare una query SQL scritta manualmente, utilizzo un [ORM](https://www.fullstackpython.com/object-relational-mappers-orms.html)(Object-relational Mapper), sqlalchemy. Inoltre, invece di caricare strutture dati 'vanilla' utilizzo la struttura `DataFrame` di pandas. Inoltre, come sottolineato nell'articolo precedente, è molto importante wrappare tutto in un blocco try/except/finally che eviti che certe risposte o processi rimangano accesi in caso di errore. 
+Lo script che esegue l'interrogazione e il caricamento dati è il file datauploader.py. Grazie a python e un pizzico di commenti il suo funzionamento è praticamente auto-esplicativo. L'unica nota che sottolineo è l'utilizzo di due livelli di astrazione per l'upload. Infatti invece di utilizzare una query SQL scritta manualmente, utilizzo un [ORM](https://www.fullstackpython.com/object-relational-mappers-orms.html) (Object-relational Mapper), sqlalchemy. Inoltre, invece di caricare strutture dati 'vanilla' utilizzo la struttura `DataFrame` di pandas. Inoltre, come sottolineato nell'articolo precedente, è molto importante wrappare tutto in un blocco try/except/finally che eviti che certe risposte o processi rimangano accesi in caso di errore. 
 
 ```python
 
@@ -148,11 +148,9 @@ import requests
 from sqlalchemy import create_engine
 
 class DataUploader:
-    """
-    Parametri: 
+    """Parametri: 
         db_url: url del database completo di credenziali d'accesso
-        resource_url: url della risorsa/API (JSON) da richiedere sul web
-    """
+        resource_url: url della risorsa/API (JSON) da richiedere sul web"""
 
     def __init__(self, db_url, resource_url):
         self.db_url = db_url
@@ -160,12 +158,10 @@ class DataUploader:
         pass
 
     def request_data(self):
-        """
-        Parametri:
-            resource_url: url della risorsa json
+        """Parametri:
+            resource_url: url della risorsa json (nel nostro caso l'endpoint di libero-API)
         Output:
-            File JSON
-        """
+            File JSON"""
 
         request = requests.get(self.resource_url)
 
@@ -184,12 +180,10 @@ class DataUploader:
 
 
     def upload_data(self):
-        """
-        Decrizione:
+        """Decrizione:
             Si connette a un db postgree su heroku e carica una tabella
         Output:
-            Messaggio di transazione
-        """
+            Messaggio di transazione"""
         try:
             engine = create_engine(self.db_url)  # fai una query SQL attraverso Pandas
             conn = engine.connect()
