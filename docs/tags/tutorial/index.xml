@@ -5,10 +5,20 @@
     <link>https://www.raffaelespataro.it/tags/tutorial/</link>
     <description>Recent content in tutorial on Raffaele Spataro</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 05 Jun 2020 12:48:08 +0100</lastBuildDate>
+    <lastBuildDate>Sun, 28 Jun 2020 12:48:08 +0100</lastBuildDate>
     
 	<atom:link href="https://www.raffaelespataro.it/tags/tutorial/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Fullstack Datascience (parte II): Deployare un API su cloud, connetterla a un DB e automatizzare l&#39;upload tramite interrogazione REST</title>
+      <link>https://www.raffaelespataro.it/posts/generale/fullstack-datascience-project-tutorial-parte-2/</link>
+      <pubDate>Sun, 28 Jun 2020 12:48:08 +0100</pubDate>
+      
+      <guid>https://www.raffaelespataro.it/posts/generale/fullstack-datascience-project-tutorial-parte-2/</guid>
+      <description>Fullstack Datascience (parte II)  Indice Introduzione Deploy di libero-API su Heroku Creare un db postgre su Heroku Creare il client con flask Nelle prossime puntate  Introduzione In questa parte di tutorial facciamo il deploy dell&amp;rsquo;app di scraping creata precedentemente sulla piattaforma Heroku. In questo modo la nostra app diventa una vera e propria web API, che risponderà con un JSON quando interrogata a un certo indirizzo.
+Ci sono molti modi in cui possiamo utilizzare un&#39;app configurata in questo modo.</description>
+    </item>
     
     <item>
       <title>Fullstack Datascience (parte I): Creare un&#39;API personalizzata con node, express e puppeteer!</title>
@@ -18,16 +28,6 @@
       <guid>https://www.raffaelespataro.it/posts/generale/fullstack-datascience-project-tutorial-parte-1/</guid>
       <description>Fullstack Datascience (parte I)  Indice Introduzione Creare una fonte di dati Scraping Server Risultato Nelle prossime puntate  Introduzione TL;DR Questo è il primo tutorial che pubblico, vi prego di avere pietà e perdonarmi se suona un po&amp;rsquo; &amp;lsquo;aranzullese&amp;rsquo;. Se siete capitati qui googlando e vi serve solo il codice lo trovate su Github. 🎉🎉🎉
 Fullstack what? Ok, il termine è un po&amp;rsquo; pretenzioso. In pratica voglio condividere un progetto che comprenda queste funzioni:</description>
-    </item>
-    
-    <item>
-      <title>Fullstack Datascience (parte II): Deployare un API su cloud, connetterla a un DB e automatizzare l&#39;upload tramite interrogazione REST</title>
-      <link>https://www.raffaelespataro.it/posts/generale/fullstack-datascience-project-tutorial-parte-2/</link>
-      <pubDate>Fri, 05 Jun 2020 12:48:08 +0100</pubDate>
-      
-      <guid>https://www.raffaelespataro.it/posts/generale/fullstack-datascience-project-tutorial-parte-2/</guid>
-      <description>Fullstack Datascience (parte II)  Indice Introduzione Deploy di libero-API su Heroku Creare un db postgre su Heroku Creare il client con flask Nelle prossime puntate  Introduzione In questa parte di tutorial facciamo il deploy dell&amp;rsquo;app di scraping creata precedentemente sulla piattaforma Heroku. In questo modo la nostra app diventa una vera e propria web API, che risponderà con un JSON quando interrogata a un certo indirizzo.
-Ci sono molti modi in cui possiamo utilizzare un&#39;app configurata in questo modo.</description>
     </item>
     
   </channel>

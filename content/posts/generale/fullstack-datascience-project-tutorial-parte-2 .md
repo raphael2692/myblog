@@ -1,7 +1,7 @@
 ---
 categories:
 - tutorial
-date: "2020-06-05T12:48:08+01:00"
+date: "2020-06-28T12:48:08+01:00"
 description: Come creare un progetto datascience fullstack. Deployare un API su cloud (Heroku), creare un db online (postgre, Heroku) e un client per automatizzare l'interrogazione all'API e l'upload dei dati (python, flask)
 
 slug: fullstack-datascience-project-tutorial-parte-2
