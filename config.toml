@@ -60,4 +60,6 @@ disqusShortname = "https-www-raffaelespataro-it"
   #  lightestColor = "#d3d3d3"
 
 [params.style]
-    primaryColor = "#990d44"
+    # primaryColor = "#990d44"
+     	#9370DB
+    primaryColor = "#0e76a8"
