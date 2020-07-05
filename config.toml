@@ -31,8 +31,8 @@ disqusShortname = "https-www-raffaelespataro-it"
     name = "github"
     url = "https://github.com/raphael2692"
   [[params.social]]
-    name = "twitter"
-    url = "https://twitter.com/raffaele2692"
+    name = "medium"
+    url = "https://medium.com/@raffaele.spataro"
 
 
   # Brown theme
