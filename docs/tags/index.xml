@@ -5,7 +5,7 @@
     <link>https://www.raffaelespataro.it/tags/</link>
     <description>Recent content in Tags on Raffaele Spataro</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 28 Jun 2020 12:48:08 +0100</lastBuildDate>
+    <lastBuildDate>Wed, 17 Feb 2021 12:48:08 +0100</lastBuildDate>
     
 	<atom:link href="https://www.raffaelespataro.it/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -13,16 +13,25 @@
     <item>
       <title>datascience</title>
       <link>https://www.raffaelespataro.it/tags/datascience/</link>
-      <pubDate>Sun, 28 Jun 2020 12:48:08 +0100</pubDate>
+      <pubDate>Wed, 17 Feb 2021 12:48:08 +0100</pubDate>
       
       <guid>https://www.raffaelespataro.it/tags/datascience/</guid>
       <description></description>
     </item>
     
     <item>
+      <title>microservizi</title>
+      <link>https://www.raffaelespataro.it/tags/microservizi/</link>
+      <pubDate>Wed, 17 Feb 2021 12:48:08 +0100</pubDate>
+      
+      <guid>https://www.raffaelespataro.it/tags/microservizi/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>progetti</title>
       <link>https://www.raffaelespataro.it/tags/progetti/</link>
-      <pubDate>Sun, 28 Jun 2020 12:48:08 +0100</pubDate>
+      <pubDate>Wed, 17 Feb 2021 12:48:08 +0100</pubDate>
       
       <guid>https://www.raffaelespataro.it/tags/progetti/</guid>
       <description></description>
@@ -31,9 +40,18 @@
     <item>
       <title>tutorial</title>
       <link>https://www.raffaelespataro.it/tags/tutorial/</link>
-      <pubDate>Sun, 28 Jun 2020 12:48:08 +0100</pubDate>
+      <pubDate>Wed, 17 Feb 2021 12:48:08 +0100</pubDate>
       
       <guid>https://www.raffaelespataro.it/tags/tutorial/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>web</title>
+      <link>https://www.raffaelespataro.it/tags/web/</link>
+      <pubDate>Wed, 17 Feb 2021 12:48:08 +0100</pubDate>
+      
+      <guid>https://www.raffaelespataro.it/tags/web/</guid>
       <description></description>
     </item>
     

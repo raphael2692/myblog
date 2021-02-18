@@ -5,10 +5,19 @@
     <link>https://www.raffaelespataro.it/categories/tutorial/</link>
     <description>Recent content in tutorial on Raffaele Spataro</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 28 Jun 2020 12:48:08 +0100</lastBuildDate>
+    <lastBuildDate>Wed, 17 Feb 2021 12:48:08 +0100</lastBuildDate>
     
 	<atom:link href="https://www.raffaelespataro.it/categories/tutorial/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Introduzione ai microservizi REST con lo stack FastAPI/SQL/React (e Docker)</title>
+      <link>https://www.raffaelespataro.it/posts/generale/microservizi-rest-fastapi-react-sql-docker-tutorial/</link>
+      <pubDate>Wed, 17 Feb 2021 12:48:08 +0100</pubDate>
+      
+      <guid>https://www.raffaelespataro.it/posts/generale/microservizi-rest-fastapi-react-sql-docker-tutorial/</guid>
+      <description>Intro Backend Frontend Deploy Conclusioni  Intro In questo post racconto come craere un app di base utilizzando lo stack FastAPI (python), SQL(&amp;hellip;lite) e React (javascript). Per quest&#39;esempio utilizzo FastAPI ma i concetti possono essere estesi a qualsiasi altro framework, con qualche distinguo. Non è un tutorial step-by-step, ma una conoscenza basilare di python e javascript dovrebbe essere sufficiente a comprendere il codice (che come sempre è disponibile su github).</description>
+    </item>
     
     <item>
       <title>Fullstack Datascience (parte II): Deployare un&#39;API su cloud, connetterla a un DB e automatizzare l&#39;upload di dati</title>

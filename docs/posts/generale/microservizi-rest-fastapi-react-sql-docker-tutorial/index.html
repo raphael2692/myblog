@@ -1,0 +1,485 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Introduzione ai microservizi REST con lo stack FastAPI/SQL/React (e Docker) // Raffaele Spataro</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.62.2" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Raffaele Spataro" />
+    <meta name="description" content="Esempio minimale di microservizio web REST con lo stack FastAPI, SQL, React e Docker." />
+    <link rel="stylesheet" href="https://www.raffaelespataro.it/css/main.min.953a26c61e7eb82d02657bfd38726787dae5e55dac90392868115caaba581924.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Introduzione ai microservizi REST con lo stack FastAPI/SQL/React (e Docker)"/>
+<meta name="twitter:description" content="Esempio minimale di microservizio web REST con lo stack FastAPI, SQL, React e Docker."/>
+
+    <meta property="og:title" content="Introduzione ai microservizi REST con lo stack FastAPI/SQL/React (e Docker)" />
+<meta property="og:description" content="Esempio minimale di microservizio web REST con lo stack FastAPI, SQL, React e Docker." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.raffaelespataro.it/posts/generale/microservizi-rest-fastapi-react-sql-docker-tutorial/" />
+<meta property="article:published_time" content="2021-02-17T12:48:08+01:00" />
+<meta property="article:modified_time" content="2021-02-17T12:48:08+01:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://www.raffaelespataro.it/"><img class="app-header-avatar" src="/avataaars.png" alt="Raffaele Spataro" /></a>
+      <h1>Raffaele Spataro</h1>
+      <p>Per gli amici Raffa. Appassionato di datascience, programmazione e filosofia. Credo in un futuro digitale e senza pregiudizi.</p>
+      <div class="app-header-social">
+        
+          <a target="_blank" href="https://www.linkedin.com/in/raffaele-spataro-44194b57/" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-linkedin">
+  <title>linkedin</title>
+  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle>
+</svg></a>
+        
+          <a target="_blank" href="https://github.com/raphael2692" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg></a>
+        
+          <a target="_blank" href="https://medium.com/@raffaele.spataro" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-link">
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Introduzione ai microservizi REST con lo stack FastAPI/SQL/React (e Docker)</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Feb 17, 2021
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          9 min read
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag">
+  <title>tag</title>
+  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line>
+</svg>
+              <a class="tag" href="https://www.raffaelespataro.it/tags/progetti/">progetti</a>
+              <a class="tag" href="https://www.raffaelespataro.it/tags/tutorial/">tutorial</a>
+              <a class="tag" href="https://www.raffaelespataro.it/tags/datascience/">datascience</a>
+              <a class="tag" href="https://www.raffaelespataro.it/tags/microservizi/">microservizi</a>
+              <a class="tag" href="https://www.raffaelespataro.it/tags/web/">web</a>
+        </div>
+      </div>
+    </header>
+    <div class="post-content">
+      <hr>
+<h3 id="introintro"><a href="#intro">Intro</a></h3>
+<h3 id="backendbackend"><a href="#backend">Backend</a></h3>
+<h3 id="frontendfrontend"><a href="#frontend">Frontend</a></h3>
+<h3 id="deploydeploy"><a href="#deploy">Deploy</a></h3>
+<h3 id="conclusioniconclusioni"><a href="#conclusioni">Conclusioni</a></h3>
+<hr>
+<h2 id="intro">Intro</h2>
+<p>In questo post racconto come craere un app di base utilizzando lo stack FastAPI (python), SQL(&hellip;lite) e React (javascript). Per quest'esempio utilizzo FastAPI ma i concetti possono essere estesi a qualsiasi altro framework, con qualche distinguo. Non è un tutorial step-by-step, ma una conoscenza basilare di python e javascript dovrebbe essere sufficiente a comprendere il codice (che come sempre è disponibile su <a href="https://github.com/raphael2692/fullstack-bookmarks-manager">github</a>). Penso possa considerarsi un buon caso di studio per chi vuole infarinatura veloce su questi temi o per chi solitamente usa altri stack e non conosce quello proposto.</p>
+<p>L'applicazione di esempio, &lsquo;Bookmarks Manager&rsquo;, è il classico esempio di applicazione con funzionalità CRUD (giusto per non fare il solito esempio con i TODO&hellip;). L'applicazione è divisa in due servizi, <em>/backend</em> che contiene la definizione degli endpoint e il database, e <em>/frontend</em> che contiene una dashboard per visualizzare e modificare i record. Entrambe le componenti sono dockerizzate e vengono inizializzate dallo stesso file docker-compose.yml.</p>
+<h1 id="backend">Backend</h1>
+<h3 id="definire-lentry-point-dellapplicazione">Definire l'entry point dell'applicazione</h3>
+<p>Per fare questa piccola app sono partito dal backend. Il primo step è definire l'entry-point dell'applicazione nello script main.py e istanziare classe base.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># main.py</span>
+<span style="color:#f92672">from</span> fastapi <span style="color:#f92672">import</span> Depends, FastAPI
+
+app <span style="color:#f92672">=</span> FastAPI()
+</code></pre></div><h3 id="connettere-un-database-sql">Connettere un database SQL</h3>
+<p>Per connettere l'applicazione al database si utilizza un ORM, sqlalchemy.  Un ORM (Object Relationship Management) è un'interfaccia software che standardizza diverse azioni e le traduce in delle query SQL. Nel file main.py viene definito l'engine e creata l'istanza (Session) che verrà passata alle altre funzioni del programma. Nel file database.py invece istanziamo l'engine e il modello base.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># main.py</span>
+<span style="color:#f92672">from</span> sqlalchemy.orm <span style="color:#f92672">import</span> Session
+<span style="color:#f92672">from</span> .database <span style="color:#f92672">import</span> SessionLocal, engine
+
+models<span style="color:#f92672">.</span>Base<span style="color:#f92672">.</span>metadata<span style="color:#f92672">.</span>create_all(bind<span style="color:#f92672">=</span>engine)
+
+)
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_db</span>():
+    db <span style="color:#f92672">=</span> SessionLocal()
+    <span style="color:#66d9ef">try</span>:
+        <span style="color:#66d9ef">yield</span> db
+    <span style="color:#66d9ef">finally</span>:
+        db<span style="color:#f92672">.</span>close()
+
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># database.py </span>
+
+<span style="color:#f92672">from</span> sqlalchemy <span style="color:#f92672">import</span> create_engine
+<span style="color:#f92672">from</span> sqlalchemy.ext.declarative <span style="color:#f92672">import</span> declarative_base
+<span style="color:#f92672">from</span> sqlalchemy.orm <span style="color:#f92672">import</span> sessionmaker
+
+SQLALCHEMY_DATABASE_URL <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">sqlite:///./bookmarks.db</span><span style="color:#e6db74">&#34;</span>
+
+engine <span style="color:#f92672">=</span> create_engine(
+    SQLALCHEMY_DATABASE_URL, connect_args<span style="color:#f92672">=</span>{<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">check_same_thread</span><span style="color:#e6db74">&#34;</span>: False}
+)
+SessionLocal <span style="color:#f92672">=</span> sessionmaker(autocommit<span style="color:#f92672">=</span>False, autoflush<span style="color:#f92672">=</span>False, bind<span style="color:#f92672">=</span>engine)
+
+Base <span style="color:#f92672">=</span> declarative_base()
+</code></pre></div><h3 id="definire-le-entità-del-database">Definire le entità del database</h3>
+<p>Successivamente definiamo le entità principali che dobbiamo manipolare e che conserveremo nel db. Solitamente, nel design di un database relazionale le entità corrispondone alle tabelle (<em>tables</em>).</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># database.py</span>
+<span style="color:#f92672">from</span> sqlalchemy <span style="color:#f92672">import</span> Boolean, Column, ForeignKey, Integer, String
+
+<span style="color:#f92672">from</span> .database <span style="color:#f92672">import</span> Base
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Bookmark</span>(Base):
+    __tablename__ <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">bookmarks</span><span style="color:#e6db74">&#34;</span>
+    id <span style="color:#f92672">=</span> Column(Integer, primary_key<span style="color:#f92672">=</span>True, index<span style="color:#f92672">=</span>True)
+    name <span style="color:#f92672">=</span> Column(String, index<span style="color:#f92672">=</span>True)
+    url <span style="color:#f92672">=</span> Column(String, index<span style="color:#f92672">=</span>True)
+</code></pre></div><h3 id="definire-gli-schemi-models">Definire gli schemi (<em>models</em>)</h3>
+<p>Dopo è necessario associare alle entità create degli schemi di validazione utilizzati da FastAPI. In questo contesto, i modelli rappresentano le <strong>interfacce</strong> delle entità che creiamo in database e che manipoliamo attraverso l'applicazione web. Tipizzare le interfacce è fondamentale per definire per non incorrere in errori. In quanto classi inoltre possiamo trasferire gli attributi e creare relazioni sfruttando l'ereditarietà.</p>
+<p>🚀 <strong>Pro-tip</strong>: Non tutti i modelli che definiamo devono corrispondere a entità del database. Ad esempio qui abbiamo definito un modello &ldquo;Transaction&rdquo; utile a codificare in maniera personalizzata l'esito di un operazione. I modelli vengono definiti nel file &lsquo;models.py&rsquo;.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> typing <span style="color:#f92672">import</span> List, Optional
+<span style="color:#f92672">from</span> pydantic <span style="color:#f92672">import</span> BaseModel
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">BookmarkBase</span>(BaseModel):
+    name: str
+    url: str
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">BookmarkCreate</span>(BookmarkBase):
+    <span style="color:#66d9ef">pass</span>
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Bookmark</span>(BookmarkBase):
+    id: int
+
+    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Config</span>:
+        orm_mode <span style="color:#f92672">=</span> True
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Transaction</span>(BaseModel):
+    status: bool
+    message: str
+</code></pre></div><h3 id="definire-le-funzionalità-applicative">Definire le funzionalità applicative</h3>
+<p>In un file separato, &lsquo;crud.py&rsquo; (giusto per capire di cosa si tratta&hellip;), definiamo le funzionalità vere e proprie dell'applicazione. In questo caso definiamo come leggere tutti i o un record dal db, cancellarne uno, eccetera. Notate che qualsiasi funzione python, con i giusti accertamenti può essere chiamata in questo contesto. Questo rende FastAPI <strong>lo strumento ideale per deployare sul web modelli di ML e app basati su di essi</strong>. Nota per i pignoli: non ho definito una funzione di update/edit dei record, perché mi sembrava che l'articolo fosse già tropo lungo&hellip;però liberissimi di farmi una pull request su github 😊.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> sqlalchemy.orm <span style="color:#f92672">import</span> Session
+<span style="color:#f92672">from</span> . <span style="color:#f92672">import</span> models, schemas
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_bookmarks</span>(db: Session, skip: int <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, limit: int <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span>):
+    <span style="color:#66d9ef">return</span> db<span style="color:#f92672">.</span>query(models<span style="color:#f92672">.</span>Bookmark)<span style="color:#f92672">.</span>offset(skip)<span style="color:#f92672">.</span>limit(limit)<span style="color:#f92672">.</span>all()
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_bookmark</span>(db: Session, id:int):
+    <span style="color:#66d9ef">return</span> db<span style="color:#f92672">.</span>query(models<span style="color:#f92672">.</span>Bookmark)<span style="color:#f92672">.</span>get(id)
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">create_bookmark</span>(db: Session, item: schemas<span style="color:#f92672">.</span>BookmarkCreate):
+    db_item <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>Bookmark(<span style="color:#f92672">*</span><span style="color:#f92672">*</span>item<span style="color:#f92672">.</span>dict())
+    db<span style="color:#f92672">.</span>add(db_item)
+    db<span style="color:#f92672">.</span>commit()
+    db<span style="color:#f92672">.</span>refresh(db_item)
+    <span style="color:#66d9ef">return</span> db_item
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">delete_bookmark</span>(db: Session, id:int):
+    <span style="color:#66d9ef">if</span> db<span style="color:#f92672">.</span>query(models<span style="color:#f92672">.</span>Bookmark)<span style="color:#f92672">.</span>get(id):
+        db<span style="color:#f92672">.</span>query(models<span style="color:#f92672">.</span>Bookmark)<span style="color:#f92672">.</span>filter_by(id<span style="color:#f92672">=</span>id)<span style="color:#f92672">.</span>delete()
+        db<span style="color:#f92672">.</span>commit()
+        <span style="color:#66d9ef">return</span> {<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">status</span><span style="color:#e6db74">&#34;</span>: True, <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">message</span><span style="color:#e6db74">&#34;</span>:f<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Record {id} deleted</span><span style="color:#e6db74">&#34;</span>}
+    <span style="color:#66d9ef">else</span>:
+        <span style="color:#66d9ef">return</span> {<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">status</span><span style="color:#e6db74">&#34;</span>: False, <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">message</span><span style="color:#e6db74">&#34;</span>:<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">No such record</span><span style="color:#e6db74">&#34;</span>}
+</code></pre></div><h3 id="definire-gli-endpoint-path-operations">Definire gli endpoint (<em>path operations</em>)</h3>
+<p>Una volta definite entità e funzionalità, non rimane che mettere tutto insieme e creare un endpoint, vale a dire associare a una richiesta http la chiamata a una certa funzionalità che a sua volta richiede, restituisce e/o manipola una certa entità, o a sua volta richiama un'altra funzionalità, che a sua volta manipola un'altra entità&hellip;eccetera 😄.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># main.py</span>
+
+<span style="color:#a6e22e">@app.post</span>(<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">/bookmarks/</span><span style="color:#e6db74">&#34;</span>, response_model<span style="color:#f92672">=</span>schemas<span style="color:#f92672">.</span>Bookmark)
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">create_bookmark</span>(
+    bookmark: schemas<span style="color:#f92672">.</span>BookmarkCreate, db: Session <span style="color:#f92672">=</span> Depends(get_db)
+):
+    <span style="color:#66d9ef">return</span> crud<span style="color:#f92672">.</span>create_bookmark(db<span style="color:#f92672">=</span>db, item<span style="color:#f92672">=</span>bookmark)
+
+
+<span style="color:#a6e22e">@app.get</span>(<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">/bookmarks/</span><span style="color:#e6db74">&#34;</span>, response_model<span style="color:#f92672">=</span>List[schemas<span style="color:#f92672">.</span>Bookmark])
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">read_bookmarks</span>(skip: int <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, limit: int <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span>, db: Session <span style="color:#f92672">=</span> Depends(get_db)):
+    items <span style="color:#f92672">=</span> crud<span style="color:#f92672">.</span>get_bookmarks(db, skip<span style="color:#f92672">=</span>skip, limit<span style="color:#f92672">=</span>limit)
+    <span style="color:#66d9ef">return</span> items
+
+<span style="color:#a6e22e">@app.get</span>(<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">/bookmarks/{id}</span><span style="color:#e6db74">&#34;</span>, response_model<span style="color:#f92672">=</span>schemas<span style="color:#f92672">.</span>Bookmark)
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">read_bookmark</span>(id:int, db: Session <span style="color:#f92672">=</span> Depends(get_db)):
+    item <span style="color:#f92672">=</span> crud<span style="color:#f92672">.</span>get_bookmark(db<span style="color:#f92672">=</span>db, id<span style="color:#f92672">=</span>id)
+    <span style="color:#66d9ef">return</span> item
+
+<span style="color:#a6e22e">@app.delete</span>(<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">/bookmarks/{id}</span><span style="color:#e6db74">&#34;</span>, response_model<span style="color:#f92672">=</span>schemas<span style="color:#f92672">.</span>Transaction)
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">delete_bookmark</span>(id:int, db: Session <span style="color:#f92672">=</span> Depends(get_db)):
+    msg <span style="color:#f92672">=</span> crud<span style="color:#f92672">.</span>delete_bookmark(db<span style="color:#f92672">=</span>db, id<span style="color:#f92672">=</span>id)
+    <span style="color:#66d9ef">if</span> msg[<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">status</span><span style="color:#e6db74">&#34;</span>]  <span style="color:#f92672">==</span> False:
+        <span style="color:#66d9ef">raise</span> HTTPException(status_code<span style="color:#f92672">=</span><span style="color:#ae81ff">404</span>, detail<span style="color:#f92672">=</span>msg[<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">message</span><span style="color:#e6db74">&#34;</span>])
+    <span style="color:#66d9ef">return</span> msg
+</code></pre></div><h3 id="definire-i-test">Definire i test</h3>
+<p>Nello sviluppo di applicazioni complesse (e qui a titolo esemplificativo) è fondamentale sviluppare dei test per ciascun endpoint. Di buona regola inoltre si procede gradualmente, scrivendo un endpoint, il relativo test, e così via. Esiste poi una metodologia chiamata TDD (Test Driven Development) per la quale è normativo scrivere prima il test e poi l'endpoint. Sicuramente si tratta di una strategia ottimale quando è necessario sviluppare funzionalità complesse perché complementare al principio &lsquo;divide et impera&rsquo;. Per superare un problema complesso è utile scomporlo in sotto problemi, che diventano una serie di sotto test che vengono eseguiti in iterativamente fino alla soluzione, e successivamente sono utili come &lsquo;breakpoint&rsquo; di controllo intermedi quando testiamo le suddette funzionalità complesse su diversi casi.  FastAPI è perfettamente integrata con il module <a href="https://docs.pytest.org/en/stable/contents.html">pytest</a>, quindi per definire i test basta creare un file con il prefisso &ldquo;test_&rdquo; e lanciare il comando &ldquo;pytest&rdquo;, una volta installato il pacchetto. Il test è basato sugli statement <a href="https://www.w3schools.com/python/ref_keyword_assert.asp">assert</a> di python.</p>
+<p>🚀 <strong>Pro-tip</strong>: Nelle applicazioni complesse, una delle fasi più delicate (e interessanti) è il design del database. Formalmente lo strumento miglire sono i diagrammi UML, facilmente creabili ad esempio con l'ottima app <a href="https://app.diagrams.net/">drawio</a>, ma senza dubbio il modo più divertente e ragionarci con una lavagnetta insieme a tutto il team di sviluppo  😊.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># test_main.py</span>
+<span style="color:#f92672">from</span> fastapi.testclient <span style="color:#f92672">import</span> TestClient
+<span style="color:#f92672">from</span> .main <span style="color:#f92672">import</span> app
+
+client <span style="color:#f92672">=</span> TestClient(app)
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_read_bookmarks</span>():
+    response <span style="color:#f92672">=</span> client<span style="color:#f92672">.</span>get(<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">/bookmarks/</span><span style="color:#e6db74">&#34;</span>)
+    response_body <span style="color:#f92672">=</span> response<span style="color:#f92672">.</span>json()
+    <span style="color:#66d9ef">print</span>(response_body)
+    <span style="color:#66d9ef">assert</span> response<span style="color:#f92672">.</span>status_code <span style="color:#f92672">==</span> <span style="color:#ae81ff">200</span>
+    <span style="color:#66d9ef">assert</span> type(response_body) <span style="color:#f92672">==</span>  list
+    <span style="color:#66d9ef">if</span> len(response_body) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>:
+            keys <span style="color:#f92672">=</span> []
+            <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> response_body:
+                <span style="color:#66d9ef">for</span> key <span style="color:#f92672">in</span> i<span style="color:#f92672">.</span>keys():
+                    <span style="color:#66d9ef">if</span> key <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> keys:
+                        keys<span style="color:#f92672">.</span>append(key)
+                <span style="color:#66d9ef">assert</span> len(keys) <span style="color:#f92672">==</span> <span style="color:#ae81ff">3</span>
+                <span style="color:#66d9ef">assert</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">id</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">in</span> keys
+                <span style="color:#66d9ef">assert</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">name</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">in</span> keys
+                <span style="color:#66d9ef">assert</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">url</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">in</span> keys
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_read_bookmark</span>():
+    response <span style="color:#f92672">=</span> client<span style="color:#f92672">.</span>get(<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">/bookmarks/</span><span style="color:#e6db74">&#34;</span>)
+    response_body <span style="color:#f92672">=</span> response<span style="color:#f92672">.</span>json()
+    <span style="color:#66d9ef">if</span> len(response_body) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>:
+        response <span style="color:#f92672">=</span> client<span style="color:#f92672">.</span>get(<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">/bookmarks/1</span><span style="color:#e6db74">&#34;</span>)
+        response_body <span style="color:#f92672">=</span> response<span style="color:#f92672">.</span>json()
+        <span style="color:#66d9ef">print</span>(response)
+        keys <span style="color:#f92672">=</span> []
+        <span style="color:#66d9ef">for</span> key <span style="color:#f92672">in</span> response_body<span style="color:#f92672">.</span>keys():
+            <span style="color:#66d9ef">if</span> key <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> keys:
+                keys<span style="color:#f92672">.</span>append(key)
+        <span style="color:#66d9ef">assert</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">id</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">in</span> keys
+        <span style="color:#66d9ef">assert</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">name</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">in</span> keys
+        <span style="color:#66d9ef">assert</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">url</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">in</span> keys
+</code></pre></div><h3 id="testare-lintegrabilità-dellapplicazione">Testare l'integrabilità dell'applicazione</h3>
+<p>Uno dei motivi per consiglio sempre di utilizzare FastAPI, oltre la compatibilità con l'ecosistema python, è nativamente compatibile allo standard <a href="https://swagger.io/specification/">OpenAPI</a>. Tant'è che integra una pagina per i test di tutti gli endpoint creati, automaticamente, consultabile sia durante lo sviluppo che in fase di integrazione con servizi esterni o altre componenti del framework che state progettando.</p>
+<p><img src="/fastapi_screen.png" alt="screen_fastapi"></p>
+<h2 id="frontend">Frontend</h2>
+<h3 id="creare-il-progetto">Creare il progetto</h3>
+<p>Per creare velocemente un progetto react consiglio di usare il boilerplate di &lsquo;react-create-apt&rsquo; attraverso npx:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">npx create-react-app frontend
+</code></pre></div><p>Che permette di avere al volo un ambiente di sviluppo:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cd frontend
+npm start
+</code></pre></div><h3 id="componenti-principali">Componenti principali</h3>
+<p>I componenti principali dell'applicazione sono due: PostBookmark che contiene i form per aggiungere un nuovo bookmark al database, e GetBookmark che contiene sia la view del metodo &lsquo;get(&quot;/bookmarks/ &hellip;)&rsquo; che una callback per cancellare un dato record. Per gestire alcuni aspetti ho usato gli hooks di react, ma non è fondamentale. Personalmente però trovo molto più comodo usarli ed evitare del tutto di scrivere delle classi. Per lo stile ho usato la libreria Material-UI che offre dei componenti intuitivamente utilizzabili al posto dei classici tag html, con tutti i benefici del caso (in particolare, passare le opzioni di stile attraverso le props).</p>
+<h4 id="postbookmarkjs">PostBookmark.js</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JSX" data-lang="JSX">
+<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">useState</span>, <span style="color:#a6e22e">useEffect</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;react&#34;</span>;
+<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">useForm</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;../utils/useForm&#34;</span>;
+
+<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Typography</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;@material-ui/core/Typography&#34;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">TextField</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;@material-ui/core/TextField&#34;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Button</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;@material-ui/core/Button&#34;</span>;
+
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">PostBookmark</span>(<span style="color:#a6e22e">props</span>) {
+
+  <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">values</span>, <span style="color:#a6e22e">handleChange</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useForm</span>({ <span style="color:#a6e22e">formName</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#a6e22e">formUrl</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span> });
+
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">postBookmark</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">params</span>) =&gt; {
+    <span style="color:#a6e22e">fetch</span>(<span style="color:#e6db74">&#34;http://localhost/bookmarks/&#34;</span>, {
+      <span style="color:#a6e22e">method</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;POST&#34;</span>,
+      <span style="color:#a6e22e">headers</span><span style="color:#f92672">:</span> {
+        <span style="color:#a6e22e">Accept</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;application/json&#34;</span>,
+        <span style="color:#e6db74">&#34;Content-Type&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;application/json&#34;</span>,
+      },
+      <span style="color:#a6e22e">body</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>({
+        <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">params</span>.<span style="color:#a6e22e">formName</span>,
+        <span style="color:#a6e22e">url</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">params</span>.<span style="color:#a6e22e">formUrl</span>,
+      }),
+    });
+  };
+
+  <span style="color:#66d9ef">return</span> (
+    &lt;<span style="color:#f92672">div</span>&gt;
+      &lt;<span style="color:#f92672">Typography</span> <span style="color:#a6e22e">variant</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;h5&#34;</span>&gt;<span style="color:#a6e22e">components</span><span style="color:#f92672">/</span><span style="color:#a6e22e">PostBookmark</span>&lt;/<span style="color:#f92672">Typography</span>&gt;
+      &lt;<span style="color:#f92672">form</span>&gt;
+        &lt;<span style="color:#f92672">TextField</span>
+          <span style="color:#a6e22e">label</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;name&#34;</span>
+          <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text&#34;</span>
+          <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;formName&#34;</span>
+          <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">values</span>.<span style="color:#a6e22e">formName</span>}
+          <span style="color:#a6e22e">onChange</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">handleChange</span>}
+        /&gt;
+        &lt;<span style="color:#f92672">br</span> /&gt;
+
+        &lt;<span style="color:#f92672">TextField</span>
+          <span style="color:#a6e22e">label</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;url&#34;</span>
+          <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text&#34;</span>
+          <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;formUrl&#34;</span>
+          <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">values</span>.<span style="color:#a6e22e">formUrl</span>}
+          <span style="color:#a6e22e">onChange</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">handleChange</span>}
+        /&gt;
+        &lt;<span style="color:#f92672">br</span> /&gt;
+        &lt;<span style="color:#f92672">br</span> /&gt;
+        &lt;<span style="color:#f92672">Button</span>
+          <span style="color:#a6e22e">variant</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;contained&#34;</span>
+          <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;submit&#34;</span>
+          <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;POST -&gt; createBookmark&#34;</span>
+          <span style="color:#a6e22e">onClick</span><span style="color:#f92672">=</span>{() =&gt; <span style="color:#a6e22e">postBookmark</span>(<span style="color:#a6e22e">values</span>)}
+        &gt;
+          <span style="color:#a6e22e">Add</span> <span style="color:#a6e22e">bookmark</span>
+        &lt;/<span style="color:#f92672">Button</span>&gt;
+      &lt;/<span style="color:#f92672">form</span>&gt;
+      &lt;<span style="color:#f92672">br</span> /&gt;
+      &lt;<span style="color:#f92672">br</span> /&gt;
+    &lt;/<span style="color:#f92672">div</span>&gt;
+  );
+}
+
+</code></pre></div><h4 id="getbookmarkjs">GetBookmark.js</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JSX" data-lang="JSX"><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">React</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;react&#34;</span>;
+<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">useFetch</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;../utils/useFetch&#34;</span>;
+<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">useState</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;react&#34;</span>;
+
+<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Typography</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;@material-ui/core/Typography&#34;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Button</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;@material-ui/core/Button&#34;</span>;
+
+<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Table</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;@material-ui/core/Table&#34;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">TableBody</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;@material-ui/core/TableBody&#34;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">TableCell</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;@material-ui/core/TableCell&#34;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">TableContainer</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;@material-ui/core/TableContainer&#34;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">TableHead</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;@material-ui/core/TableHead&#34;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">TableRow</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;@material-ui/core/TableRow&#34;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Paper</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;@material-ui/core/Paper&#34;</span>;
+
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">GetBookmarks</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">params</span>) =&gt; {
+
+  <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">data</span>, <span style="color:#a6e22e">loading</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">useFetch</span>(
+    <span style="color:#e6db74">`</span><span style="color:#e6db74">http://localhost/bookmarks/?skip=0&amp;limit=100</span><span style="color:#e6db74">`</span>
+  );
+
+  <span style="color:#a6e22e">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">deletePost</span>(<span style="color:#a6e22e">url</span>) {
+    <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">fetch</span>(<span style="color:#a6e22e">url</span>, { <span style="color:#a6e22e">method</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;DELETE&#34;</span> }).<span style="color:#a6e22e">then</span>(window.<span style="color:#a6e22e">location</span>.<span style="color:#a6e22e">reload</span>());
+  }
+
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">renderTr</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">array</span>) =&gt;
+    <span style="color:#a6e22e">array</span>.<span style="color:#a6e22e">map</span>((<span style="color:#a6e22e">el</span>) =&gt; (
+      &lt;<span style="color:#f92672">TableRow</span> <span style="color:#a6e22e">key</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">el</span>.<span style="color:#a6e22e">id</span>}&gt;
+        &lt;<span style="color:#f92672">TableCell</span>&gt;{<span style="color:#a6e22e">el</span>.<span style="color:#a6e22e">id</span>}&lt;/<span style="color:#f92672">TableCell</span>&gt;
+        &lt;<span style="color:#f92672">TableCell</span>&gt;
+          {<span style="color:#e6db74">&#34; &#34;</span>}
+          &lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">el</span>.<span style="color:#a6e22e">url</span>} <span style="color:#a6e22e">target</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;_blank&#34;</span>&gt;
+            {<span style="color:#a6e22e">el</span>.<span style="color:#a6e22e">name</span>}
+          &lt;/<span style="color:#f92672">a</span>&gt;
+        &lt;/<span style="color:#f92672">TableCell</span>&gt;
+        &lt;<span style="color:#f92672">TableCell</span>&gt;
+          &lt;<span style="color:#f92672">Button</span>
+            <span style="color:#a6e22e">variant</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;contained&#34;</span>
+            <span style="color:#a6e22e">color</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;secondary&#34;</span>
+            <span style="color:#a6e22e">onClick</span><span style="color:#f92672">=</span>{() =&gt; <span style="color:#a6e22e">deletePost</span>(<span style="color:#e6db74">&#34;http://localhost/bookmarks/&#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">el</span>.<span style="color:#a6e22e">id</span>)}
+          &gt;
+            <span style="color:#a6e22e">DELETE</span>
+          &lt;/<span style="color:#f92672">Button</span>&gt;
+        &lt;/<span style="color:#f92672">TableCell</span>&gt;
+      &lt;/<span style="color:#f92672">TableRow</span>&gt;
+    ));
+
+  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">data</span>) {
+    <span style="color:#66d9ef">return</span> (
+      &lt;<span style="color:#f92672">div</span>&gt;
+        &lt;<span style="color:#f92672">Typography</span> <span style="color:#a6e22e">variant</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;h5&#34;</span>&gt;<span style="color:#a6e22e">components</span><span style="color:#f92672">/</span><span style="color:#a6e22e">GetBookmarks</span>&lt;/<span style="color:#f92672">Typography</span>&gt;
+        &lt;<span style="color:#f92672">TableContainer</span> <span style="color:#a6e22e">component</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">Paper</span>}&gt;
+          &lt;<span style="color:#f92672">Table</span> <span style="color:#a6e22e">className</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;BookmarksTable&#34;</span> <span style="color:#a6e22e">aria</span><span style="color:#960050;background-color:#1e0010">-</span><span style="color:#a6e22e">label</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;simple table&#34;</span>&gt;
+            &lt;<span style="color:#f92672">TableHead</span>&gt;
+              &lt;<span style="color:#f92672">TableRow</span>&gt;
+                &lt;<span style="color:#f92672">TableCell</span>&gt;<span style="color:#a6e22e">ID</span>&lt;/<span style="color:#f92672">TableCell</span>&gt;
+                &lt;<span style="color:#f92672">TableCell</span>&gt;<span style="color:#a6e22e">URL</span>&lt;/<span style="color:#f92672">TableCell</span>&gt;
+                &lt;<span style="color:#f92672">TableCell</span>&gt;&lt;/<span style="color:#f92672">TableCell</span>&gt;
+              &lt;/<span style="color:#f92672">TableRow</span>&gt;
+            &lt;/<span style="color:#f92672">TableHead</span>&gt;
+            &lt;<span style="color:#f92672">TableBody</span>&gt;{<span style="color:#a6e22e">renderTr</span>(<span style="color:#a6e22e">data</span>)}&lt;/<span style="color:#f92672">TableBody</span>&gt;
+          &lt;/<span style="color:#f92672">Table</span>&gt;
+        &lt;/<span style="color:#f92672">TableContainer</span>&gt;
+      &lt;/<span style="color:#f92672">div</span>&gt;
+    );
+  }
+
+  <span style="color:#66d9ef">else</span> {
+    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Loading data...&#34;</span>;
+  }
+};
+
+<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> <span style="color:#a6e22e">GetBookmarks</span>;
+
+</code></pre></div><h3 id="risultato-finale">Risultato finale</h3>
+<p>Un po&rsquo; spartano, ma l'importante è essere chiari:</p>
+<p><img src="/bookmarks_manager_front.png" alt="screen_frontend"></p>
+<h2 id="deploy">Deploy</h2>
+<p>Una volta sviluppate le funzionalità di base è utile definire un file <a href="https://www.docker.com/">Docker</a> per deployare rapidamente la soluzione su qualsiasi piattaforma cloud o server Linux locale (io uso un'ottima distro Debian, <a href="https://pop.system76.com/">Pop OS!</a>, versione LTS 20.04). In questo caso ho creato due Dockerfile, uno per il backend e uno per il frontend.</p>
+<h3 id="container-backend">Container Backend</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dockerfile" data-lang="dockerfile"><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> tiangolo/uvicorn-gunicorn-fastapi:python3.8</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> ./app /app <span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">WORKDIR</span><span style="color:#e6db74"> /app</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> requirements.txt requirements.txt<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> pip install pip --upgrade<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> pip install -r requirements.txt<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> . /app<span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><h3 id="container-frontend">Container Frontend</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dockerfile" data-lang="dockerfile"><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> node:13.12.0-alpine</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">WORKDIR</span><span style="color:#e6db74"> /app</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENV</span> PATH /app/node_modules/.bin:$PATH<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> package.json ./<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> package-lock.json ./<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> npm install --silent<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> npm install react-scripts@3.4.1 -g --silent<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> . ./<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">CMD</span> [<span style="color:#e6db74">&#34;npm&#34;</span>, <span style="color:#e6db74">&#34;start&#34;</span>]<span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><h3 id="orchestratore">Orchestratore</h3>
+<p>Un altro vantaggio della piattaforma docker è di poter connettere rapidamente dei database dedicati alle nostre applicazioni (ad esempio invece che usare un'istanza SQLlite avremmo potuto connettere un container docker) e &lsquo;orchestrare&rsquo; tutte le applicazioni del nostro framework attraverso un semplice file di configurazione (&ldquo;docker-compose.yml&rdquo;). Di seguito il contenuto del file e la struttura finale dell'applicazione:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">version: <span style="color:#e6db74">&#39;3.3&#39;</span>
+services: 
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - 80:80
+    volumes:
+      - ./backend:/app
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    volumes:
+      - ./frontend:/app
+</code></pre></div><p><img src="/bookmark_manager_dir.png" alt="screen"></p>
+<h2 id="conclusioni">Conclusioni</h2>
+<p>Se ave trovato lo stack interessante potete leggere di più al riguardo sul sito di <a href="https://fastapi.tiangolo.com/">FastAPI</a>, che oltre documenta il codice in maniera approfondita ma assumendo che il lettore non sia un esperto. Per quanto riguarda il frontend, penso che React sia la soluzione più flessibile, ma esistono tante altre opzioni o framework, ad esempio, <a href="https://vuejs.org/">Vue.js</a> se si vuole un framework javascript&hellip;con meno javascript o <a href="https://jinja.palletsprojects.com/en/2.11.x/">Jinja2</a> (che può essere <a href="https://fastapi.tiangolo.com/advanced/templates/">servito direttamente da FastAPI</a>) se preferiamo lavorare con template html.</p>
+<p>Seppur minimale quest'esempio costituisce lo scheletro di un'architettura a microservizi. Sul pezzo fondamentale che manca, un sistema di brokeraggio e load balancig penso che scriverò qualcosa nei prossimi post.</p>
+
+    </div>
+    <div class="post-footer">
+      <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "https-www-raffaelespataro-it" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>
